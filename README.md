@@ -48,14 +48,16 @@ referencias.md     → bibliografia consolidada
 ```
 
 - Workspace pnpm: cada exercício e o projeto final são pacotes.
-- No branch `main`, os testes dos exercícios **falham** até você resolver. As soluções de referência ficam no branch `solucoes`; consulte só depois de tentar.
+- Os testes dos exercícios **falham** até você resolver o código em `src/`.
+- Cada exercício tem uma solução de referência em `solucao/`. Consulte só depois de tentar. `pnpm --filter <pacote> test:solucao` roda os mesmos testes contra ela.
 
 ## Comandos
 
 ```bash
 pnpm install                       # instala tudo
 pnpm verificar                     # confere Node, pnpm e provedor de modelo
-pnpm test                          # todos os testes (offline; no main, os de exercício falham até você resolver)
+pnpm test                          # todos os testes (offline; os de exercício falham até você resolver)
+pnpm test:solucao                  # mesmos testes contra as soluções de referência
 pnpm typecheck                     # checagem de tipos
 pnpm --filter <pacote> test        # testes de um pacote (ex.: @mentoria/llm)
 ```

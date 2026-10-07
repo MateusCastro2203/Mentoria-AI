@@ -23,6 +23,8 @@ Rodar os testes de uma etapa:
 pnpm --filter @mentoria/curador exec vitest run test/m01.test.ts
 ```
 
+A solução de referência de cada etapa fica em [`solucao/mNN/`](solucao/). Tente antes de abrir. `pnpm --filter @mentoria/curador test:solucao` roda os mesmos testes contra ela, e `m01:temperaturas:solucao` roda o experimento usando a solução (útil se você travou e quer seguir para a próxima etapa).
+
 ## Etapa M1 — classificação em texto livre
 
 **Objetivo:** um prompt que diz se a notícia é relevante para a newsletter e em que categoria ela entra (`modelos`, `ferramentas`, `pesquisa`, `regulacao`, `mercado`).

@@ -1,10 +1,14 @@
 // Experimento da etapa M1 (fornecido): roda classificarLivre 5 vezes por temperatura em 3 notícias,
 // com o modelo de verdade, e grava as respostas em saidas/m01-temperaturas.md.
-// pnpm --filter @mentoria/curador m01:temperaturas
+// pnpm --filter @mentoria/curador m01:temperaturas            (usa o seu código, em src/)
+// pnpm --filter @mentoria/curador m01:temperaturas:solucao    (usa a solução de referência)
 import { mkdirSync, writeFileSync } from "node:fs";
 import { lerConfig } from "@mentoria/llm";
-import { classificarLivre } from "../src/m01/classificar-livre.js";
 import { carregarNoticias } from "../src/noticia.js";
+
+const { classificarLivre }: typeof import("../src/m01/classificar-livre.js") = process.env.SOLUCAO
+  ? await import("../solucao/m01/classificar-livre.js")
+  : await import("../src/m01/classificar-livre.js");
 
 const TEMPERATURAS = [0, 0.7, 1.5];
 const REPETICOES = 5;

@@ -6,7 +6,9 @@
   "scripts": {
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "m01:temperaturas": "tsx --env-file-if-exists=../.env scripts/m01-temperaturas.ts"
+    "m01:temperaturas": "tsx --env-file-if-exists=../.env scripts/m01-temperaturas.ts",
+    "test:solucao": "vitest run --config vitest.solucao.config.ts",
+    "m01:temperaturas:solucao": "SOLUCAO=1 tsx --env-file-if-exists=../.env scripts/m01-temperaturas.ts"
   },
   "dependencies": {
     "@mentoria/llm": "workspace:*",

@@ -44,7 +44,8 @@ Este repositório contém uma mentoria sobre IA aplicada criada por um AI Engine
 ```bash
 pnpm install                          # instala o workspace
 pnpm verificar                           # valida Node, pnpm e provedor de modelo
-pnpm test                             # Vitest em todos os pacotes (offline, com mock)
+pnpm test                             # Vitest em todos os pacotes (offline, com mock; exercícios falham até resolver)
+pnpm test:solucao                     # mesmos testes contra as soluções de referência (solucao/)
 pnpm typecheck                        # tsc --noEmit em todos os pacotes
 pnpm --filter <pacote> test           # testes de um pacote só (ex.: @mentoria/llm)
 pnpm --filter <pacote> exec vitest run <arquivo> -t "<nome do teste>"   # um teste
@@ -65,9 +66,11 @@ pnpm --filter <pacote> exec vitest run <arquivo> -t "<nome do teste>"   # um tes
 
 ## Soluções dos exercícios
 
-- O branch `main` contém só enunciados, código inicial e testes que **falham** até a pessoa resolver.
-- As soluções ficam no branch `solucoes`. Nunca escreva soluções no `main`.
-- Ao concluir um exercício, faça o commit do enunciado no `main` e depois da solução no `solucoes`. Rode os testes no `solucoes` para confirmar que passam.
+- Tudo fica no `main`, sem branch de soluções.
+- `src/` contém só enunciado e código inicial com `TODO`: os testes (`pnpm --filter <pacote> test`) **falham** até a pessoa resolver. Nunca escreva solução em `src/`.
+- A solução de referência fica em `solucao/`, no mesmo pacote, espelhando só os arquivos com `TODO` (no projeto final, `solucao/mNN/…`). Todo arquivo de solução começa com o aviso de spoiler.
+- `vitest.solucao.config.ts` redireciona por alias os imports `../src/<arquivo>.js` dos testes para `solucao/`, então os **mesmos testes** rodam contra a resposta: `pnpm --filter <pacote> test:solucao` (ou `pnpm test:solucao` na raiz). Ao criar um exercício novo, inclua o arquivo no regex do alias.
+- Ao concluir um exercício, confirme as duas coisas: `test` falha (stubs) e `test:solucao` passa.
 
 ## Ambiente
 

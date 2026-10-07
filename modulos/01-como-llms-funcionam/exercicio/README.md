@@ -19,7 +19,9 @@ Um teste só, enquanto você trabalha:
 pnpm --filter @mentoria/ex01-llms exec vitest run test/sampling.test.ts -t "softmax"
 ```
 
-No branch `main` os testes **falham** até você implementar. É esperado.
+Os testes **falham** até você implementar. É esperado.
+
+A solução de referência está em [`solucao/`](solucao/). Tente antes de abrir. Para rodar os mesmos testes contra ela: `pnpm --filter @mentoria/ex01-llms test:solucao`.
 
 ## Versão base
 

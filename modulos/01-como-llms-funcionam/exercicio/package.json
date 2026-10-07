@@ -10,7 +10,8 @@
     "demo:tokens": "tsx demo/tokens.ts",
     "demo:temperatura": "tsx --env-file-if-exists=../../../.env demo/temperatura.ts",
     "demo:proximo-token": "tsx --env-file-if-exists=../../../.env demo/proximo-token.ts",
-    "demo:alucinacao": "tsx --env-file-if-exists=../../../.env demo/alucinacao.ts"
+    "demo:alucinacao": "tsx --env-file-if-exists=../../../.env demo/alucinacao.ts",
+    "test:solucao": "vitest run --config vitest.solucao.config.ts"
   },
   "dependencies": {
     "@mentoria/llm": "workspace:*",

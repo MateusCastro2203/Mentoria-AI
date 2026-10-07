@@ -9,7 +9,8 @@
   "scripts": {
     "verificar": "tsx --env-file-if-exists=.env scripts/verificar.ts",
     "test": "pnpm -r --no-bail --if-present test",
-    "typecheck": "pnpm -r --if-present typecheck && tsc --noEmit -p tsconfig.json"
+    "typecheck": "pnpm -r --if-present typecheck && tsc --noEmit -p tsconfig.json",
+    "test:solucao": "pnpm -r --no-bail --if-present test:solucao"
   },
   "devDependencies": {
     "@types/node": "^24.19.1",
