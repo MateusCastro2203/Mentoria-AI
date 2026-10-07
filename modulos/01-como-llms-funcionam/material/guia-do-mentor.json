@@ -1,0 +1,8 @@
+{
+  "selo": "Guia do mentor",
+  "titulo": "Módulo 01 — Como LLMs funcionam",
+  "subtitulo": "Cada slide da apresentação explicado em linguagem simples: termos, o que falar e o que responder.",
+  "fontes": [
+    { "arquivo": "modulos/01-como-llms-funcionam/material/guia-do-mentor.md", "titulo": "Slide a slide" }
+  ]
+}

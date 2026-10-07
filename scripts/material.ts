@@ -2,7 +2,7 @@
  * pnpm material [filtro]: gera o material de cada módulo que tem a pasta material/.
  *
  *   material/slides.md    → apresentacao.pdf + apresentacao.pptx (Marp; o PPTX leva as notas do apresentador)
- *   material/apostila.json → apostila.pdf (junta trechos dos .md do repositório; não duplica conteúdo)
+ *   material/<nome>.json   → <nome>.pdf (apostila, guia do mentor…: junta trechos dos .md do repositório)
  *
  * Precisa de Chrome, Edge ou Chromium instalado (ou CHROME_PATH apontando para ele).
  * Ex.: pnpm material 01
@@ -30,6 +30,8 @@ interface Fonte {
 }
 
 interface ConfigApostila {
+  /** Rótulo pequeno acima do título da capa (padrão: "Apostila"). */
+  selo?: string;
   titulo: string;
   subtitulo: string;
   fontes: Fonte[];
@@ -49,7 +51,9 @@ for (const modulo of modulos) {
   const pasta = join(RAIZ, "modulos", modulo, "material");
   console.log(`\n▸ ${modulo}`);
   if (existsSync(join(pasta, "slides.md"))) await gerarSlides(pasta);
-  if (existsSync(join(pasta, "apostila.json"))) gerarApostila(pasta);
+  for (const manifesto of readdirSync(pasta).filter((f) => f.endsWith(".json")).sort()) {
+    gerarDocumento(pasta, manifesto.replace(/\.json$/, ""));
+  }
 }
 
 async function gerarSlides(pasta: string) {
@@ -72,8 +76,8 @@ async function gerarSlides(pasta: string) {
   }
 }
 
-function gerarApostila(pasta: string) {
-  const config: ConfigApostila = JSON.parse(readFileSync(join(pasta, "apostila.json"), "utf8"));
+function gerarDocumento(pasta: string, nome: string) {
+  const config: ConfigApostila = JSON.parse(readFileSync(join(pasta, `${nome}.json`), "utf8"));
 
   const capitulos = config.fontes.map((fonte, i) => {
     const caminho = join(RAIZ, fonte.arquivo);
@@ -90,7 +94,7 @@ function gerarApostila(pasta: string) {
 <style>${readFileSync(CSS_APOSTILA, "utf8")}</style></head>
 <body>
 <section class="capa">
-  <p class="selo">Mentoria de IA aplicada · Apostila</p>
+  <p class="selo">Mentoria de IA aplicada · ${config.selo ?? "Apostila"}</p>
   <h1>${config.titulo}</h1>
   <p class="subtitulo">${config.subtitulo}</p>
   <nav><ol>${capitulos.map((c) => `<li><a href="#${c.id}">${c.titulo}</a></li>`).join("")}</ol></nav>
@@ -99,9 +103,9 @@ function gerarApostila(pasta: string) {
 ${capitulos.map((c) => `<section class="capitulo" id="${c.id}"><h1>${c.titulo}</h1>${c.html}</section>`).join("\n")}
 </body></html>`;
 
-  const html = join(mkdtempSync(join(tmpdir(), "apostila-")), "apostila.html");
+  const html = join(mkdtempSync(join(tmpdir(), "material-")), `${nome}.html`);
   writeFileSync(html, documento);
-  const saida = join(pasta, "apostila.pdf");
+  const saida = join(pasta, `${nome}.pdf`);
   imprimirPdf(html, saida);
   console.log(`  ✔ ${relative(RAIZ, saida)}`);
 }

@@ -21,7 +21,7 @@ Este repositório contém uma mentoria sobre IA aplicada criada por um AI Engine
 3. Demo ou exercício hands-on executável, com critério claro de "feito"
 4. Armadilhas comuns e perguntas para discussão
 5. Referências primárias (docs oficiais, papers, posts dos autores), sempre com URL
-6. Material de aula em `material/`: `slides.md` seguindo o roteiro do README (com notas do apresentador e os tempos) e `apostila.json` montando a apostila a partir dos .md existentes (não duplique texto). Rode `pnpm material NN`, confira os PDFs visualmente e commite os arquivos gerados.
+6. Material de aula em `material/`: `slides.md` seguindo o roteiro do README (com notas do apresentador e os tempos) e `apostila.json` montando a apostila a partir dos .md existentes (não duplique texto), mais `guia-do-mentor.md` explicando cada slide para quem vai apresentar (o mentor não é especialista em todos os termos: explique jargão, dê analogias e respostas esperadas das perguntas). Qualquer `material/<nome>.json` vira `<nome>.pdf`. Rode `pnpm material NN`, confira os PDFs visualmente e commite os arquivos gerados.
 
 ## Estrutura do repositório
 
@@ -42,6 +42,7 @@ Este repositório contém uma mentoria sobre IA aplicada criada por um AI Engine
     material/
         slides.md       → apresentação (Marp, tema `mentoria`), com notas do apresentador em comentários HTML
         apostila.json   → quais trechos dos .md do repo entram na apostila
+        guia-do-mentor.md / .json → cada slide explicado em linguagem simples (termos, o que falar, respostas esperadas)
         apresentacao.pdf / apresentacao.pptx / apostila.pdf  → gerados por `pnpm material NN` (commitados)
 /projeto-final/         → projeto integrador que atravessa os módulos
 ```
