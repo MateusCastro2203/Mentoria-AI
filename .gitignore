@@ -7,3 +7,4 @@ coverage/
 .promptfoo/
 *.log
 .DS_Store
+.vitest/

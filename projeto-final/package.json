@@ -1,0 +1,22 @@
+{
+  "name": "@mentoria/curador",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "m01:temperaturas": "tsx --env-file-if-exists=../.env scripts/m01-temperaturas.ts"
+  },
+  "dependencies": {
+    "@mentoria/llm": "workspace:*",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.1",
+    "ai": "^7.0.128",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  }
+}

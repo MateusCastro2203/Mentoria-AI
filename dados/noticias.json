@@ -1,0 +1,110 @@
+[
+  {
+    "id": "n01",
+    "titulo": "Laboratório Aurora lança modelo aberto de 7B com janela de contexto de 256 mil tokens",
+    "resumo": "O modelo Aurora-7B foi publicado com pesos abertos e licença permissiva. Segundo o anúncio, ele mantém a qualidade em documentos longos e roda em uma única GPU de consumo com quantização de 4 bits.",
+    "fonte": "Blog do Laboratório Aurora",
+    "url": "https://example.com/aurora/aurora-7b",
+    "publicadaEm": "2026-09-22",
+    "rotulo": { "relevante": true, "categoria": "modelos" }
+  },
+  {
+    "id": "n02",
+    "titulo": "Biblioteca open source Trilha simplifica evals de LLM em TypeScript",
+    "resumo": "A Trilha permite descrever casos de teste em YAML e roda asserções determinísticas e LLM-as-judge a partir do terminal. A versão 1.0 adiciona integração com pipelines de CI.",
+    "fonte": "Repositório Trilha",
+    "url": "https://example.com/trilha/release-1-0",
+    "publicadaEm": "2026-09-18",
+    "rotulo": { "relevante": true, "categoria": "ferramentas" }
+  },
+  {
+    "id": "n03",
+    "titulo": "Estudo mostra que modelos erram mais quando a informação está no meio de contextos longos",
+    "resumo": "Pesquisadores da Universidade Fictícia de Campinas repetiram experimentos de recuperação em contextos longos com modelos de 2026 e encontraram queda de acerto quando o trecho relevante fica no meio do prompt.",
+    "fonte": "Anais do Workshop Brasileiro de PLN",
+    "url": "https://example.com/wbpln/contexto-longo-2026",
+    "publicadaEm": "2026-09-10",
+    "rotulo": { "relevante": true, "categoria": "pesquisa" }
+  },
+  {
+    "id": "n04",
+    "titulo": "Agência reguladora abre consulta pública sobre transparência em sistemas de IA de crédito",
+    "resumo": "A proposta exige que instituições financeiras expliquem ao cliente os principais fatores de decisões automatizadas de crédito e guardem registros auditáveis por cinco anos.",
+    "fonte": "Diário Regulatório",
+    "url": "https://example.com/regulatorio/consulta-ia-credito",
+    "publicadaEm": "2026-09-25",
+    "rotulo": { "relevante": true, "categoria": "regulacao" }
+  },
+  {
+    "id": "n05",
+    "titulo": "CEO de startup de IA aparece em evento com tênis de edição limitada",
+    "resumo": "O executivo da Nimbus IA chamou a atenção do público com um par de tênis colecionável durante a abertura de uma conferência de tecnologia.",
+    "fonte": "Coluna Tech & Estilo",
+    "url": "https://example.com/estilo/ceo-tenis",
+    "publicadaEm": "2026-09-27",
+    "rotulo": { "relevante": false, "categoria": null }
+  },
+  {
+    "id": "n06",
+    "titulo": "Plataforma de nuvem reduz preço de inferência e passa a cobrar por token em cache",
+    "resumo": "A Cumulus Cloud anunciou nova tabela em que tokens de entrada reaproveitados de requisições anteriores custam uma fração do preço normal, com impacto direto em aplicações com prompts longos e repetidos.",
+    "fonte": "Blog da Cumulus Cloud",
+    "url": "https://example.com/cumulus/precos-cache",
+    "publicadaEm": "2026-09-15",
+    "rotulo": { "relevante": true, "categoria": "mercado" }
+  },
+  {
+    "id": "n07",
+    "titulo": "Prefeitura inaugura nova ciclovia na zona sul",
+    "resumo": "A obra tem 12 km e conecta três bairros ao centro. A inauguração contou com passeio ciclístico aberto ao público.",
+    "fonte": "Jornal do Bairro",
+    "url": "https://example.com/bairro/ciclovia",
+    "publicadaEm": "2026-09-20",
+    "rotulo": { "relevante": false, "categoria": null }
+  },
+  {
+    "id": "n08",
+    "titulo": "Guia prático: como versionar prompts junto com o código",
+    "resumo": "O artigo mostra como guardar prompts em arquivos versionados, rodar evals a cada mudança e fazer rollback quando a qualidade cai, com exemplos em TypeScript.",
+    "fonte": "Blog Engenharia Pragmática",
+    "url": "https://example.com/pragmatica/versionar-prompts",
+    "publicadaEm": "2026-09-12",
+    "rotulo": { "relevante": true, "categoria": "ferramentas" }
+  },
+  {
+    "id": "n09",
+    "titulo": "Empresa de IA anuncia que seu próximo modelo será 'revolucionário'",
+    "resumo": "Em post curto, a Zênite IA afirma que o próximo lançamento mudará tudo, sem divulgar data, benchmarks ou detalhes técnicos.",
+    "fonte": "Rede social da Zênite IA",
+    "url": "https://example.com/zenite/teaser",
+    "publicadaEm": "2026-09-28",
+    "rotulo": { "relevante": false, "categoria": null }
+  },
+  {
+    "id": "n10",
+    "titulo": "Pesquisa propõe método para reduzir alucinações recompensando respostas 'não sei'",
+    "resumo": "O trabalho altera a pontuação durante o treinamento para não punir o modelo quando ele admite incerteza e mede menos respostas inventadas em perguntas factuais.",
+    "fonte": "Pré-print do Instituto Horizonte",
+    "url": "https://example.com/horizonte/nao-sei",
+    "publicadaEm": "2026-09-05",
+    "rotulo": { "relevante": true, "categoria": "pesquisa" }
+  },
+  {
+    "id": "n11",
+    "titulo": "Fintech fictícia relata corte de 40% no tempo de triagem de tickets com classificador de IA",
+    "resumo": "Em estudo de caso, o time de engenharia descreve como trocou regras manuais por um classificador com saída estruturada e revisão humana para casos de baixa confiança.",
+    "fonte": "Blog de Engenharia da Fintech Exemplo",
+    "url": "https://example.com/fintech-exemplo/triagem-tickets",
+    "publicadaEm": "2026-09-19",
+    "rotulo": { "relevante": true, "categoria": "mercado" }
+  },
+  {
+    "id": "n12",
+    "titulo": "Time de futebol contrata novo técnico após sequência de derrotas",
+    "resumo": "O clube anunciou o substituto nesta segunda-feira. O novo técnico estreia no próximo fim de semana.",
+    "fonte": "Portal Esportivo",
+    "url": "https://example.com/esportes/novo-tecnico",
+    "publicadaEm": "2026-09-29",
+    "rotulo": { "relevante": false, "categoria": null }
+  }
+]

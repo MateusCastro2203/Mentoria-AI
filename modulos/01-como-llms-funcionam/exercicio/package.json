@@ -1,0 +1,25 @@
+{
+  "name": "@mentoria/ex01-llms",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run --exclude \"test/desafio/**\"",
+    "test:desafio": "vitest run test/desafio",
+    "typecheck": "tsc --noEmit",
+    "demo:tokens": "tsx demo/tokens.ts",
+    "demo:temperatura": "tsx --env-file-if-exists=../../../.env demo/temperatura.ts",
+    "demo:proximo-token": "tsx --env-file-if-exists=../../../.env demo/proximo-token.ts",
+    "demo:alucinacao": "tsx --env-file-if-exists=../../../.env demo/alucinacao.ts"
+  },
+  "dependencies": {
+    "@mentoria/llm": "workspace:*",
+    "js-tiktoken": "^1.0.21"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  }
+}
