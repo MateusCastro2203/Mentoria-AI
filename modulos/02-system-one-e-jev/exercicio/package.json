@@ -1,0 +1,27 @@
+{
+  "name": "@mentoria/ex02-decisoes",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run --exclude \"test/desafio/**\"",
+    "test:desafio": "vitest run test/desafio",
+    "test:solucao": "vitest run --config vitest.solucao.config.ts",
+    "typecheck": "tsc --noEmit",
+    "demo:livre-vs-tipado": "tsx --env-file-if-exists=../../../.env demo/livre-vs-tipado.ts",
+    "demo:armadilha-do-rotulo": "tsx --env-file-if-exists=../../../.env demo/armadilha-do-rotulo.ts",
+    "demo:calibracao": "tsx --env-file-if-exists=../../../.env demo/calibracao.ts",
+    "demo:jev": "tsx --env-file-if-exists=../../../.env demo/jev.ts"
+  },
+  "dependencies": {
+    "@mentoria/curador": "workspace:*",
+    "@mentoria/llm": "workspace:*",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  }
+}

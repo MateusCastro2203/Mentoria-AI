@@ -35,9 +35,18 @@ Bibliografia consolidada da mentoria. Cada módulo lista as suas no próprio REA
 - Kalai et al. (2025). *Why Language Models Hallucinate*. https://arxiv.org/abs/2509.04664 · https://openai.com/index/why-language-models-hallucinate/
 - RFC 2606 (domínios reservados, usados nos dados sintéticos). https://www.rfc-editor.org/rfc/rfc2606
 
-## System One e Jev (Módulo 02)
+## System One, decisões tipadas e calibração (Módulo 02)
 
-- TypeSafe AI — *Introducing System One Models and Jev* (15/set/2026): https://typesafe.ai/blog/introducing-system-one-models-and-jev
+- TypeSafe AI. *Introducing System One Models and Jev* (15/set/2026). https://typesafe.ai/blog/introducing-system-one-models-and-jev
+- TypeSafe AI, documentação: primitivas https://docs.typesafe.ai/primitives · confiança https://docs.typesafe.ai/confidence · API https://docs.typesafe.ai/api · limitações do jev-1.13 https://docs.typesafe.ai/model-jaggedness/jev-1.13
+- Kahneman, D. (2011). *Thinking, Fast and Slow*. Farrar, Straus and Giroux.
+- Guo et al. (2017). *On Calibration of Modern Neural Networks*. https://arxiv.org/abs/1706.04599
+- Kadavath et al. (2022). *Language Models (Mostly) Know What They Know*. https://arxiv.org/abs/2207.05221
+- Wang et al. (2022). *Self-Consistency Improves Chain of Thought Reasoning in Language Models*. https://arxiv.org/abs/2203.11171
+- OpenAI (2023). *GPT-4 Technical Report*. https://arxiv.org/abs/2303.08774
+- Tian et al. (2023). *Just Ask for Calibration*. https://arxiv.org/abs/2305.14975
+- Xiong et al. (2023). *Can LLMs Express Their Uncertainty?* https://arxiv.org/abs/2306.13063
+- Tam et al. (2024). *Let Me Speak Freely? A Study on the Impact of Format Restrictions on Performance of Large Language Models*. https://arxiv.org/abs/2408.02442
 
 ## Orquestração e HITL (Módulos 06–07)
 

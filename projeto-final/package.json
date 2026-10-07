@@ -8,7 +8,9 @@
     "typecheck": "tsc --noEmit",
     "m01:temperaturas": "tsx --env-file-if-exists=../.env scripts/m01-temperaturas.ts",
     "test:solucao": "vitest run --config vitest.solucao.config.ts",
-    "m01:temperaturas:solucao": "SOLUCAO=1 tsx --env-file-if-exists=../.env scripts/m01-temperaturas.ts"
+    "m01:temperaturas:solucao": "SOLUCAO=1 tsx --env-file-if-exists=../.env scripts/m01-temperaturas.ts",
+    "m02:comparar": "tsx --env-file-if-exists=../.env scripts/m02-comparar.ts",
+    "m02:comparar:solucao": "SOLUCAO=1 tsx --env-file-if-exists=../.env scripts/m02-comparar.ts"
   },
   "dependencies": {
     "@mentoria/llm": "workspace:*",
@@ -20,5 +22,9 @@
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",
     "vitest": "^5.0.3"
+  },
+  "exports": {
+    ".": "./src/noticia.ts",
+    "./*": "./src/*.ts"
   }
 }

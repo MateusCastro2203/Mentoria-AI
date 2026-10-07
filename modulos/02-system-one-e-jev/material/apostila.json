@@ -1,0 +1,23 @@
+{
+  "titulo": "Módulo 02 — Além do chat: System One e o Jev",
+  "subtitulo": "Texto ou decisão? Decisões tipadas com um LLM comum, de onde vem a confiança e como medir se ela presta. Com leitura crítica do anúncio do Jev.",
+  "fontes": [
+    {
+      "arquivo": "modulos/02-system-one-e-jev/README.md",
+      "titulo": "Visão geral",
+      "secoes": ["Objetivos de aprendizagem", "Mensagem central"]
+    },
+    { "arquivo": "modulos/02-system-one-e-jev/conceitos.md", "titulo": "Conceitos" },
+    { "arquivo": "modulos/02-system-one-e-jev/exercicio/README.md", "titulo": "Exercício" },
+    {
+      "arquivo": "projeto-final/README.md",
+      "titulo": "Projeto final — etapa M2",
+      "secoes": ["Etapa M2 — decisão tipada com confiança"]
+    },
+    {
+      "arquivo": "modulos/02-system-one-e-jev/README.md",
+      "titulo": "Para revisar",
+      "secoes": ["Perguntas para discussão (15 min)", "Armadilhas comuns"]
+    }
+  ]
+}

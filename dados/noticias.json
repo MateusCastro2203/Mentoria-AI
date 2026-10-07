@@ -6,7 +6,10 @@
     "fonte": "Blog do Laboratório Aurora",
     "url": "https://example.com/aurora/aurora-7b",
     "publicadaEm": "2026-09-22",
-    "rotulo": { "relevante": true, "categoria": "modelos" }
+    "rotulo": {
+      "relevante": true,
+      "categoria": "modelos"
+    }
   },
   {
     "id": "n02",
@@ -15,7 +18,10 @@
     "fonte": "Repositório Trilha",
     "url": "https://example.com/trilha/release-1-0",
     "publicadaEm": "2026-09-18",
-    "rotulo": { "relevante": true, "categoria": "ferramentas" }
+    "rotulo": {
+      "relevante": true,
+      "categoria": "ferramentas"
+    }
   },
   {
     "id": "n03",
@@ -24,7 +30,10 @@
     "fonte": "Anais do Workshop Brasileiro de PLN",
     "url": "https://example.com/wbpln/contexto-longo-2026",
     "publicadaEm": "2026-09-10",
-    "rotulo": { "relevante": true, "categoria": "pesquisa" }
+    "rotulo": {
+      "relevante": true,
+      "categoria": "pesquisa"
+    }
   },
   {
     "id": "n04",
@@ -33,7 +42,10 @@
     "fonte": "Diário Regulatório",
     "url": "https://example.com/regulatorio/consulta-ia-credito",
     "publicadaEm": "2026-09-25",
-    "rotulo": { "relevante": true, "categoria": "regulacao" }
+    "rotulo": {
+      "relevante": true,
+      "categoria": "regulacao"
+    }
   },
   {
     "id": "n05",
@@ -42,7 +54,10 @@
     "fonte": "Coluna Tech & Estilo",
     "url": "https://example.com/estilo/ceo-tenis",
     "publicadaEm": "2026-09-27",
-    "rotulo": { "relevante": false, "categoria": null }
+    "rotulo": {
+      "relevante": false,
+      "categoria": null
+    }
   },
   {
     "id": "n06",
@@ -51,7 +66,10 @@
     "fonte": "Blog da Cumulus Cloud",
     "url": "https://example.com/cumulus/precos-cache",
     "publicadaEm": "2026-09-15",
-    "rotulo": { "relevante": true, "categoria": "mercado" }
+    "rotulo": {
+      "relevante": true,
+      "categoria": "mercado"
+    }
   },
   {
     "id": "n07",
@@ -60,7 +78,10 @@
     "fonte": "Jornal do Bairro",
     "url": "https://example.com/bairro/ciclovia",
     "publicadaEm": "2026-09-20",
-    "rotulo": { "relevante": false, "categoria": null }
+    "rotulo": {
+      "relevante": false,
+      "categoria": null
+    }
   },
   {
     "id": "n08",
@@ -69,7 +90,10 @@
     "fonte": "Blog Engenharia Pragmática",
     "url": "https://example.com/pragmatica/versionar-prompts",
     "publicadaEm": "2026-09-12",
-    "rotulo": { "relevante": true, "categoria": "ferramentas" }
+    "rotulo": {
+      "relevante": true,
+      "categoria": "ferramentas"
+    }
   },
   {
     "id": "n09",
@@ -78,7 +102,10 @@
     "fonte": "Rede social da Zênite IA",
     "url": "https://example.com/zenite/teaser",
     "publicadaEm": "2026-09-28",
-    "rotulo": { "relevante": false, "categoria": null }
+    "rotulo": {
+      "relevante": false,
+      "categoria": null
+    }
   },
   {
     "id": "n10",
@@ -87,7 +114,10 @@
     "fonte": "Pré-print do Instituto Horizonte",
     "url": "https://example.com/horizonte/nao-sei",
     "publicadaEm": "2026-09-05",
-    "rotulo": { "relevante": true, "categoria": "pesquisa" }
+    "rotulo": {
+      "relevante": true,
+      "categoria": "pesquisa"
+    }
   },
   {
     "id": "n11",
@@ -96,7 +126,10 @@
     "fonte": "Blog de Engenharia da Fintech Exemplo",
     "url": "https://example.com/fintech-exemplo/triagem-tickets",
     "publicadaEm": "2026-09-19",
-    "rotulo": { "relevante": true, "categoria": "mercado" }
+    "rotulo": {
+      "relevante": true,
+      "categoria": "mercado"
+    }
   },
   {
     "id": "n12",
@@ -105,6 +138,105 @@
     "fonte": "Portal Esportivo",
     "url": "https://example.com/esportes/novo-tecnico",
     "publicadaEm": "2026-09-29",
-    "rotulo": { "relevante": false, "categoria": null }
+    "rotulo": {
+      "relevante": false,
+      "categoria": null
+    }
+  },
+  {
+    "id": "n13",
+    "titulo": "Startup Vértice lança assistente de código que promete 'nunca errar'",
+    "resumo": "O anúncio traz depoimentos de clientes e um vídeo de demonstração, mas nenhum benchmark, artigo técnico ou documentação pública.",
+    "fonte": "Blog da Vértice",
+    "url": "https://example.com/vertice/assistente",
+    "publicadaEm": "2026-09-21",
+    "rotulo": {
+      "relevante": false,
+      "categoria": null
+    }
+  },
+  {
+    "id": "n14",
+    "titulo": "Tutorial mostra como medir custo por requisição de um chatbot em produção",
+    "resumo": "O passo a passo instrumenta chamadas ao modelo, registra tokens de entrada e saída e monta um painel de custo diário por funcionalidade.",
+    "fonte": "Blog Engenharia Pragmática",
+    "url": "https://example.com/pragmatica/custo-chatbot",
+    "publicadaEm": "2026-09-23",
+    "rotulo": {
+      "relevante": true,
+      "categoria": "ferramentas"
+    }
+  },
+  {
+    "id": "n15",
+    "titulo": "Lei de proteção de dados ganha guia sobre uso de dados pessoais em treinamento de modelos",
+    "resumo": "O documento orienta empresas sobre base legal, anonimização e direito de oposição quando dados de clientes são usados para treinar ou ajustar modelos de IA.",
+    "fonte": "Autoridade Nacional Fictícia",
+    "url": "https://example.com/autoridade/guia-treinamento",
+    "publicadaEm": "2026-09-24",
+    "rotulo": {
+      "relevante": true,
+      "categoria": "regulacao"
+    }
+  },
+  {
+    "id": "n16",
+    "titulo": "Grupo de pesquisa publica benchmark de agentes que executam tarefas em planilhas",
+    "resumo": "O conjunto tem 500 tarefas com gabarito verificável e mostra que os agentes testados erram mais em fórmulas encadeadas do que em formatação.",
+    "fonte": "Pré-print do Laboratório Delta",
+    "url": "https://example.com/delta/benchmark-planilhas",
+    "publicadaEm": "2026-09-26",
+    "rotulo": {
+      "relevante": true,
+      "categoria": "pesquisa"
+    }
+  },
+  {
+    "id": "n17",
+    "titulo": "Investidores aportam US$ 300 milhões em empresa de chips para inferência",
+    "resumo": "A rodada será usada para ampliar a produção. O comunicado não traz detalhes técnicos, preços ou disponibilidade para desenvolvedores.",
+    "fonte": "Portal de Negócios",
+    "url": "https://example.com/negocios/aporte-chips",
+    "publicadaEm": "2026-09-27",
+    "rotulo": {
+      "relevante": false,
+      "categoria": null
+    }
+  },
+  {
+    "id": "n18",
+    "titulo": "Modelo de embeddings multilíngue gratuito supera versões anteriores em português",
+    "resumo": "O novo modelo de embeddings da Fundação Ipê foi publicado com pesos abertos e avaliação em tarefas de busca semântica em 12 idiomas, incluindo português.",
+    "fonte": "Blog da Fundação Ipê",
+    "url": "https://example.com/ipe/embeddings-multilingue",
+    "publicadaEm": "2026-09-28",
+    "rotulo": {
+      "relevante": true,
+      "categoria": "modelos"
+    }
+  },
+  {
+    "id": "n19",
+    "titulo": "Empresa de varejo conta como reduziu alucinações no atendimento com busca em documentos",
+    "resumo": "O relato descreve a migração de respostas livres para respostas baseadas em trechos recuperados da base de conhecimento, com citação obrigatória da fonte.",
+    "fonte": "Blog de Tecnologia do Varejo Exemplo",
+    "url": "https://example.com/varejo-exemplo/rag-atendimento",
+    "publicadaEm": "2026-09-30",
+    "rotulo": {
+      "relevante": true,
+      "categoria": "mercado"
+    }
+  },
+  {
+    "id": "n20",
+    "titulo": "Celebridade diz em entrevista que usa IA para escolher roupas",
+    "resumo": "Em programa de TV, o apresentador comentou que pede sugestões de looks a um aplicativo de IA antes de eventos.",
+    "fonte": "Revista de Entretenimento",
+    "url": "https://example.com/entretenimento/ia-roupas",
+    "publicadaEm": "2026-10-01",
+    "rotulo": {
+      "relevante": false,
+      "categoria": null
+    }
   }
 ]

@@ -85,3 +85,11 @@ section.frase p { font-size: 40px; line-height: 1.35; }
 .barra.top b { background: var(--acento); }
 section.capa em { color: #a9c1ff; }
 th code { background: rgba(255, 255, 255, 0.18); color: #fff; }
+
+/* Cores do realce de sintaxe nos blocos de código (fundo escuro) */
+pre .hljs-string { color: #a8e6a1; }
+pre .hljs-attr, pre .hljs-attribute, pre .hljs-property { color: #9ec5ff; }
+pre .hljs-number, pre .hljs-literal { color: #ffb86b; }
+pre .hljs-keyword, pre .hljs-built_in, pre .hljs-title { color: #ff9e80; }
+pre .hljs-comment { color: #9aa3b2; }
+pre .hljs-punctuation, pre .hljs-meta { color: #e9e6df; }
