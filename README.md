@@ -41,7 +41,8 @@ A especificação completa está em [`ESPECIFICACAO.md`](ESPECIFICACAO.md).
 
 ```
 packages/llm/      → @mentoria/llm: única porta para modelos (troca de provedor só pelo .env)
-modulos/NN-nome/   → README.md (roteiro da aula), conceitos.md (leitura de apoio), exercicio/
+modulos/NN-nome/   → README.md (roteiro da aula), conceitos.md (leitura de apoio), exercicio/,
+                     material/ (apresentação em PDF/PPTX e apostila em PDF)
 projeto-final/     → o curador de newsletter, evoluindo módulo a módulo
 dados/             → dados sintéticos usados nos exercícios
 referencias.md     → bibliografia consolidada

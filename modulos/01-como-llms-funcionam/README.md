@@ -3,6 +3,7 @@
 > **Aula ao vivo (1h):** 40 min de conceito + demo · 15 min de discussão · 5 min de folga
 > **Pré-requisito:** [00-setup](../00-setup/README.md) com `pnpm verificar` verde
 > **Leitura de apoio:** [`conceitos.md`](conceitos.md) · **Exercício:** [`exercicio/`](exercicio/README.md)
+> **Material:** [apresentação (PDF)](material/apresentacao.pdf) · [apresentação (PPTX, com notas)](material/apresentacao.pptx) · [apostila (PDF)](material/apostila.pdf)
 
 ## Objetivos de aprendizagem
 

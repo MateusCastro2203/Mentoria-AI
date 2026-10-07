@@ -21,6 +21,7 @@ Este repositório contém uma mentoria sobre IA aplicada criada por um AI Engine
 3. Demo ou exercício hands-on executável, com critério claro de "feito"
 4. Armadilhas comuns e perguntas para discussão
 5. Referências primárias (docs oficiais, papers, posts dos autores), sempre com URL
+6. Material de aula em `material/`: `slides.md` seguindo o roteiro do README (com notas do apresentador e os tempos) e `apostila.json` montando a apostila a partir dos .md existentes (não duplique texto). Rode `pnpm material NN`, confira os PDFs visualmente e commite os arquivos gerados.
 
 ## Estrutura do repositório
 
@@ -30,12 +31,18 @@ Este repositório contém uma mentoria sobre IA aplicada criada por um AI Engine
 /referencias.md         → bibliografia consolidada
 /packages/llm/          → @mentoria/llm: camada de provedor (única porta para modelos)
 /scripts/verificar.ts   → verificação do ambiente (`pnpm verificar`)
+/scripts/material.ts    → gera apresentação e apostila (`pnpm material NN`)
+/material/              → tema Marp dos slides e CSS da apostila
 /dados/                 → dados sintéticos compartilhados
 /modulos/00-setup/      → pré-requisitos e configuração do ambiente
 /modulos/NN-nome/
     README.md           → plano do encontro (roteiro com tempos)
     conceitos.md        → material de apoio
     exercicio/          → enunciado + código inicial + testes (pacote do workspace)
+    material/
+        slides.md       → apresentação (Marp, tema `mentoria`), com notas do apresentador em comentários HTML
+        apostila.json   → quais trechos dos .md do repo entram na apostila
+        apresentacao.pdf / apresentacao.pptx / apostila.pdf  → gerados por `pnpm material NN` (commitados)
 /projeto-final/         → projeto integrador que atravessa os módulos
 ```
 
@@ -47,6 +54,7 @@ pnpm verificar                           # valida Node, pnpm e provedor de model
 pnpm test                             # Vitest em todos os pacotes (offline, com mock; exercícios falham até resolver)
 pnpm test:solucao                     # mesmos testes contra as soluções de referência (solucao/)
 pnpm typecheck                        # tsc --noEmit em todos os pacotes
+pnpm material 01                      # gera apresentação (PDF + PPTX) e apostila do módulo 01 (precisa de Chrome/Edge/Chromium)
 pnpm --filter <pacote> test           # testes de um pacote só (ex.: @mentoria/llm)
 pnpm --filter <pacote> exec vitest run <arquivo> -t "<nome do teste>"   # um teste
 ```

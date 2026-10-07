@@ -10,10 +10,13 @@
     "verificar": "tsx --env-file-if-exists=.env scripts/verificar.ts",
     "test": "pnpm -r --no-bail --if-present test",
     "typecheck": "pnpm -r --if-present typecheck && tsc --noEmit -p tsconfig.json",
-    "test:solucao": "pnpm -r --no-bail --if-present test:solucao"
+    "test:solucao": "pnpm -r --no-bail --if-present test:solucao",
+    "material": "tsx scripts/material.ts"
   },
   "devDependencies": {
+    "@marp-team/marp-cli": "^4.5.1",
     "@types/node": "^24.19.1",
+    "marked": "^18.1.0",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",
     "vitest": "^5.0.3"

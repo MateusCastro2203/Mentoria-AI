@@ -1,0 +1,41 @@
+@page { size: A4; margin: 22mm 20mm 22mm 20mm; }
+
+:root { --tinta: #1b1f2a; --suave: #5b6272; --painel: #f3f1ec; --acento: #e4572e; --azul: #2b59c3; }
+
+body {
+  font-family: "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  color: var(--tinta);
+  font-size: 10.5pt;
+  line-height: 1.55;
+}
+
+.capa { height: 250mm; display: flex; flex-direction: column; justify-content: center; page-break-after: always; }
+.capa .selo { color: var(--acento); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 9pt; }
+.capa h1 { font-size: 30pt; line-height: 1.15; margin: 6mm 0 3mm; border: none; }
+.capa .subtitulo { font-size: 13pt; color: var(--suave); max-width: 140mm; }
+.capa nav { margin-top: 14mm; border-top: 2px solid var(--acento); padding-top: 6mm; }
+.capa nav a { color: var(--tinta); text-decoration: none; }
+.capa nav li { margin: 2mm 0; font-size: 11.5pt; }
+.capa .rodape { margin-top: auto; font-size: 8.5pt; color: var(--suave); }
+
+.capitulo { page-break-before: always; }
+.capitulo > h1 { font-size: 22pt; border-bottom: 3px solid var(--acento); padding-bottom: 2mm; margin-bottom: 6mm; }
+h2 { font-size: 15pt; margin-top: 8mm; color: var(--tinta); break-after: avoid; }
+h3 { font-size: 12pt; color: var(--azul); margin-top: 6mm; break-after: avoid; }
+p, li { orphans: 3; widows: 3; }
+a { color: var(--azul); text-decoration: none; word-break: break-word; }
+strong { color: #000; }
+
+code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 9pt; background: var(--painel); padding: 0 3px; border-radius: 3px; }
+pre { background: var(--painel); border-left: 3px solid var(--azul); padding: 3mm 4mm; border-radius: 3px; overflow-wrap: anywhere; white-space: pre-wrap; break-inside: avoid; }
+pre code { background: none; padding: 0; font-size: 8.5pt; }
+
+blockquote { border-left: 4px solid var(--acento); background: #fdf3ef; margin: 4mm 0; padding: 2mm 5mm; }
+
+table { border-collapse: collapse; width: 100%; font-size: 9pt; margin: 3mm 0; }
+tr { break-inside: avoid; }
+th { background: var(--tinta); color: #fff; text-align: left; padding: 2mm 3mm; }
+td { border-bottom: 1px solid #ddd8cc; padding: 2mm 3mm; vertical-align: top; }
+tr:nth-child(2n) td { background: #faf9f5; }
+hr { border: none; border-top: 1px solid #ddd8cc; margin: 6mm 0; }
+th code { background: rgba(255, 255, 255, 0.18); color: #fff; }

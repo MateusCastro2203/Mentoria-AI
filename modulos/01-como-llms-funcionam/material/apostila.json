@@ -1,0 +1,23 @@
+{
+  "titulo": "Módulo 01 — Como LLMs funcionam",
+  "subtitulo": "Tokens, geração autoregressiva, sampling, context window, custo e alucinação. Com embeddings, atenção e pré-treino vs. RLHF/RLVR como leitura de apoio.",
+  "fontes": [
+    {
+      "arquivo": "modulos/01-como-llms-funcionam/README.md",
+      "titulo": "Visão geral",
+      "secoes": ["Objetivos de aprendizagem", "Mensagem central"]
+    },
+    { "arquivo": "modulos/01-como-llms-funcionam/conceitos.md", "titulo": "Conceitos" },
+    { "arquivo": "modulos/01-como-llms-funcionam/exercicio/README.md", "titulo": "Exercício" },
+    {
+      "arquivo": "projeto-final/README.md",
+      "titulo": "Projeto final — etapa M1",
+      "secoes": ["Etapa M1 — classificação em texto livre"]
+    },
+    {
+      "arquivo": "modulos/01-como-llms-funcionam/README.md",
+      "titulo": "Para revisar",
+      "secoes": ["Perguntas para discussão (15 min)", "Armadilhas comuns"]
+    }
+  ]
+}
