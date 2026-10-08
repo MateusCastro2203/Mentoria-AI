@@ -7,7 +7,7 @@ Este guia explica cada slide da apresentação em linguagem simples: o que signi
 **Antes da aula (uns 15 minutos):**
 1. `pnpm -F @mentoria/curador m05:edicao:solucao` (vários minutos): gera a edição e o relatório do time.
 2. `pnpm -F @mentoria/ex05-mcp demo:protocolo` (instantâneo, não usa modelo).
-3. `pnpm -F @mentoria/ex05-mcp demo:time` (~2 min) uma vez, para ver os papéis falando.
+3. `pnpm -F @mentoria/ex05-mcp demo:time` (~4 min) uma vez, para ver os papéis falando. Em aula, se o tempo apertar, mostre a saída gravada em vez de rodar ao vivo.
 
 ---
 
@@ -155,7 +155,7 @@ MCP dá ao modelo acesso a dados e à execução de ações. Cuidados:
 
 ## Slide 14 — Divisória "4 · O time do curador"
 
-Rode `demo:time` (versão curta, 3 itens, ~2 min): cada papel imprime o que está fazendo, e no fim aparece a edição em markdown gravada pelo servidor de edição.
+Rode `demo:time` (~4 min; a coleta e a classificação rodam completas e só 3 itens são redigidos): cada papel imprime o que está fazendo, e no fim aparece a edição em markdown gravada pelo servidor de edição.
 
 ---
 

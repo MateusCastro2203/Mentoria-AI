@@ -38,7 +38,7 @@ Da raiz do repositório:
 
 ```bash
 pnpm -F @mentoria/ex05-mcp demo:protocolo                 # offline: mensagens JSON-RPC, nas duas eras
-pnpm -F @mentoria/ex05-mcp demo:time                      # o time em versão curta (3 itens, ~2 min)
+pnpm -F @mentoria/ex05-mcp demo:time                      # o time em versão curta (~4 min: coleta e classificação completas, redação de 3 itens)
 pnpm -F @mentoria/curador m05:edicao:solucao              # ANTES da aula: o time completo (vários minutos)
 npx @modelcontextprotocol/inspector pnpm -F @mentoria/curador mcp:fontes   # opcional: cliente MCP externo
 ```
