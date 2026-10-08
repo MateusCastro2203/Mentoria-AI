@@ -11,7 +11,7 @@ Os dados são sintéticos: veja [`dados/README.md`](../dados/README.md) (notíci
 | **M1** | [01 — Como LLMs funcionam](../modulos/01-como-llms-funcionam/README.md) | classificação em texto livre | `test/m01.test.ts` |
 | **M2** | [02 — System One e Jev](../modulos/02-system-one-e-jev/README.md) | decisão tipada (Zod) com confiança | `test/m02.test.ts` |
 | **M3** | [03 — Prompt, Evals e Guardrails](../modulos/03-prompt-evals-guardrails/README.md) | prompt v2, resumos, guardrails e evals | `test/m03.test.ts` + `m03:avaliar` |
-| M4 | 04 — Skills vs. Agentes | skill reutilizável + agente que busca fontes | em breve |
+| **M4** | [04 — Skills vs. Agentes](../modulos/04-skills-vs-agentes/README.md) | skill reutilizável + agente que busca fontes | `test/m04.test.ts` + `m04:comparar` |
 | M5 | 05 — Multiagente e MCP | coletor, classificador, redator, revisor via MCP local | em breve |
 | M6 | 06 — LangGraph.js | grafo com estado, checkpoint e arestas por confiança | em breve |
 | M7 | 07 — HITL | aprovação humana antes de publicar | em breve |
@@ -111,4 +111,34 @@ Implemente em `src/m03/`:
 Traga para a Aula 4: o relatório, com os erros da v2 e as reprovações do juiz nos resumos (você concorda com ele?).
 
 **Desafio extra:** `src/m03/desafio/verificar-online.ts` → `verificarFonteOnline(url)`: a URL responde? (HEAD com timeout, testado com `fetch` simulado: `pnpm -F @mentoria/curador test:desafio`.)
+
+## Etapa M4 — o curador como skill e como agente
+
+**Objetivo:** empacotar o conhecimento do curador como uma **skill** reutilizável e, depois, transformar o curador num **agente** que decide sozinho quais fontes ler. Medir o que muda.
+
+As notícias agora chegam por **fontes** simuladas (`dados/fontes.json`: dez fontes, cada uma com descrição e notícias).
+
+1. **A skill** (`skills/curar-noticia/`), no formato aberto [Agent Skills](https://agentskills.io/specification):
+   - escreva o `SKILL.md`: `name` igual à pasta, `description` dizendo o que faz **e quando usar**, e as instruções da classificação no corpo;
+   - ponha as definições das categorias em `references/guia-de-rotulagem.md` e aponte para ele no corpo.
+2. **`src/m04/skill.ts`:** `lerSkill(pasta)` (lê e valida o frontmatter segundo a especificação), `montarPromptDaSkill(skill, noticia)` e `classificarComSkill(noticia)`.
+3. **`src/m04/ferramentas.ts`:** `criarFerramentas(deps)` → `listarFontes`, `lerFonte`, `avaliarNoticias` e `entregarSelecao`, com um registro do que o agente fez.
+4. **`src/m04/agente.ts`:** `validarSelecao` (o agente propõe; o código decide) e `curarComAgente`, que roda o loop com `gerarComFerramentas` de `@mentoria/llm`.
+
+**Feito =**
+1. `pnpm -F @mentoria/curador exec vitest run test/m04.test.ts` verde (offline, com modelo simulado);
+2. a comparação roda com o modelo de verdade e grava `saidas/m04-comparacao.md`:
+
+   ```bash
+   pnpm -F @mentoria/curador m04:comparar      # pipeline com a skill × agente (2 execuções)
+   ```
+
+Abra o relatório e responda (vamos discutir na Aula 5):
+
+- O agente leu todas as fontes? Quais pulou, e isso custou notícias?
+- Quantas chamadas ao modelo cada abordagem fez? E o tempo?
+- As duas execuções do agente seguiram a mesma trajetória?
+- O código recusou algo que o agente entregou? Por quê?
+
+**Desafio extra:** instale a sua skill num agente de código compatível com Agent Skills (por exemplo, copiando a pasta para o diretório de skills da ferramenta) e peça para ele classificar uma notícia nova. A `description` foi suficiente para a skill ser ativada?
 

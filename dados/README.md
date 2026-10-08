@@ -44,6 +44,10 @@ Casos de fronteira: relato de empresa → `ferramentas` se ensina uma técnica, 
 
 Nenhum dos três pode ser publicado automaticamente, qualquer que seja a classificação.
 
+## `fontes.json`
+
+Dez fontes simuladas (como feeds de notícias), cada uma com uma descrição e a lista de ids das notícias que publica. Toda notícia está em exatamente uma fonte. O agente do Módulo 4 escolhe quais fontes ler a partir das descrições.
+
 ## `exemplos.json`
 
 Seis exemplos rotulados para usar como *few-shot* no prompt (Módulo 3). **Não** fazem parte do conjunto de avaliação: usar o mesmo exemplo no prompt e na avaliação infla o resultado (vazamento).

@@ -1,4 +1,4 @@
-import { generateText, Output, type LanguageModel } from "ai";
+import { generateText, hasToolCall, Output, stepCountIs, type LanguageModel, type ToolSet } from "ai";
 import type { z } from "zod";
 import { lerConfig, type ConfigLlm } from "./config.js";
 import { criarModelo, NOME_PROVEDOR, type TokenBruto } from "./modelo.js";
@@ -73,4 +73,55 @@ function extrairLogprobs(metadata: unknown): LogprobToken[] | undefined {
     logprob: t.logprob,
     alternativas: t.top_logprobs ?? [],
   }));
+}
+
+export interface OpcoesFerramentas extends Omit<OpcoesGeracao, "logprobs"> {
+  /** Ferramentas no formato do AI SDK (`tool({ description, inputSchema, execute })`). */
+  ferramentas: ToolSet;
+  /** Limite de passos do loop (cada passo é uma chamada ao modelo). */
+  maxPassos: number;
+  /** Para o loop assim que o modelo chamar esta ferramenta (ex.: a que entrega o resultado final). */
+  pararAoChamar?: string;
+}
+
+export interface ChamadaDeFerramenta {
+  passo: number;
+  ferramenta: string;
+  entrada: unknown;
+  saida: unknown;
+}
+
+/**
+ * Loop de agente: o modelo pode chamar ferramentas; o resultado volta para ele, e assim por diante,
+ * até responder em texto, chamar `pararAoChamar` ou atingir `maxPassos`.
+ */
+export async function gerarComFerramentas(
+  opcoes: OpcoesFerramentas,
+): Promise<{ texto: string; passos: number; chamadas: ChamadaDeFerramenta[]; uso: Uso }> {
+  const config = opcoes.config ?? lerConfig();
+  const inicio = performance.now();
+  const resultado = await generateText({
+    model: opcoes.modelo ?? criarModelo(config),
+    system: opcoes.system,
+    prompt: opcoes.prompt,
+    temperature: opcoes.temperature,
+    tools: opcoes.ferramentas,
+    stopWhen: [stepCountIs(opcoes.maxPassos), ...(opcoes.pararAoChamar ? [hasToolCall(opcoes.pararAoChamar)] : [])],
+    providerOptions: config.reasoningEffort
+      ? { [NOME_PROVEDOR]: { reasoningEffort: config.reasoningEffort } }
+      : undefined,
+  });
+  const chamadas = resultado.steps.flatMap((passo, i) =>
+    passo.toolResults.map((r) => ({ passo: i + 1, ferramenta: r.toolName, entrada: r.input, saida: r.output })),
+  );
+  return {
+    texto: resultado.text,
+    passos: resultado.steps.length,
+    chamadas,
+    uso: {
+      tokensEntrada: resultado.totalUsage.inputTokens,
+      tokensSaida: resultado.totalUsage.outputTokens,
+      latenciaMs: Math.round(performance.now() - inicio),
+    },
+  };
 }

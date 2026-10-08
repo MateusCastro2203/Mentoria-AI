@@ -29,7 +29,7 @@ Devs com ou sem experiência em IA. Todo exercício tem dois níveis:
 | 1 | [01 — Como LLMs funcionam](modulos/01-como-llms-funcionam/README.md) | prompt que classifica notícias em texto livre |
 | 2 | [02 — Além do chat: System One e Jev](modulos/02-system-one-e-jev/README.md) | decisão tipada (Zod) com confiança |
 | 3 | [03 — Prompt, Evals e Guardrails](modulos/03-prompt-evals-guardrails/README.md) | dataset rotulado, evals e guardrails de schema e fonte |
-| 4 | 04 — Skills vs. Agentes | skill reutilizável e agente que busca fontes |
+| 4 | [04 — Skills vs. Agentes](modulos/04-skills-vs-agentes/README.md) | skill reutilizável e agente que busca fontes |
 | 5 | 05 — Multiagente e MCP | coletor, classificador, redator e revisor com MCP local |
 | 6 | 06 — Orquestração com LangGraph.js | grafo com estado, checkpoint e arestas por confiança |
 | 7 | 07 — HITL e automação | editor humano aprova, edita ou rejeita a edição |

@@ -39,3 +39,14 @@ export function carregarExemplos(
 ): Exemplo[] {
   return JSON.parse(readFileSync(caminho, "utf8"));
 }
+
+/** Fonte simulada (como um feed): nome, descrição e ids das notícias que publica (Módulo 4). */
+export interface Fonte {
+  nome: string;
+  descricao: string;
+  noticias: string[];
+}
+
+export function carregarFontes(caminho = new URL("../../dados/fontes.json", import.meta.url)): Fonte[] {
+  return JSON.parse(readFileSync(caminho, "utf8"));
+}

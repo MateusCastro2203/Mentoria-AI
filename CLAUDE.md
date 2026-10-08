@@ -47,6 +47,7 @@ Este repositório contém uma mentoria sobre IA aplicada criada por um AI Engine
 /projeto-final/         → projeto integrador que atravessa os módulos
     src/mNN/ · solucao/mNN/ · test/mNN.test.ts   → uma pasta por etapa
     evals/              → configs do promptfoo + providers que rodam o curador de verdade (a partir do M3)
+    skills/             → skills no formato Agent Skills (a partir do M4; a solução fica em solucao/skills/)
     scripts/            → experimentos fornecidos por etapa (mNN:*); gravam em saidas/ (ignorado no git)
 ```
 
@@ -69,6 +70,7 @@ pnpm --filter <pacote> exec vitest run <arquivo> -t "<nome do teste>"   # um tes
 - O pacote usa o Vercel AI SDK (`ai`) com `@ai-sdk/openai-compatible`: Ollama (padrão, `http://localhost:11434/v1`) e qualquer provedor remoto compatível com a API da OpenAI usam o mesmo caminho.
 - **Evals (promptfoo) rodam o sistema de verdade**: os providers em `projeto-final/evals/` importam o código do curador (`src/` ou, com `SOLUCAO=1`, `solucao/`) e o script `m03:avaliar` lê a saída JSON do promptfoo, calcula as métricas e aplica o portão de qualidade (sai com código 1 se reprovar). O promptfoo não tem portão por taxa de acerto: ele fica no script.
 - **Testes Vitest são determinísticos e offline**: recebem um modelo mock (`MockLanguageModelV4` de `ai/test`) por injeção. Chamadas reais ao modelo ficam em scripts e evals (promptfoo), nunca nos testes de critério de feito.
+- Agentes usam `gerarComFerramentas` de `@mentoria/llm` (loop do AI SDK com limite de passos e parada por ferramenta). Nos testes, o modelo é um `MockLanguageModelV4` com roteiro de tool-calls.
 - Ao documentar provedores remotos, mantenha a explicação genérica (qualquer endpoint compatível com a API da OpenAI). Não recomende fornecedor nem token de API específico.
 
 ## Restrições de formato

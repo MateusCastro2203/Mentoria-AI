@@ -1,0 +1,23 @@
+{
+  "titulo": "Módulo 04 — Skills vs. Agentes",
+  "subtitulo": "Prompt, skill, agente ou decisão estruturada? O formato Agent Skills, o loop de um agente, as proteções e um framework de decisão, com o curador transformado em skill e em agente.",
+  "fontes": [
+    {
+      "arquivo": "modulos/04-skills-vs-agentes/README.md",
+      "titulo": "Visão geral",
+      "secoes": ["Objetivos de aprendizagem", "Mensagem central"]
+    },
+    { "arquivo": "modulos/04-skills-vs-agentes/conceitos.md", "titulo": "Conceitos" },
+    { "arquivo": "modulos/04-skills-vs-agentes/exercicio/README.md", "titulo": "Exercício" },
+    {
+      "arquivo": "projeto-final/README.md",
+      "titulo": "Projeto final — etapa M4",
+      "secoes": ["Etapa M4 — o curador como skill e como agente"]
+    },
+    {
+      "arquivo": "modulos/04-skills-vs-agentes/README.md",
+      "titulo": "Para revisar",
+      "secoes": ["Os 4 casos da aula", "Perguntas para discussão (15 min)", "Armadilhas comuns"]
+    }
+  ]
+}

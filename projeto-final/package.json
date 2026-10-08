@@ -14,7 +14,9 @@
     "test:desafio": "vitest run test/desafio",
     "m03:avaliar": "tsx --env-file-if-exists=../.env scripts/m03-avaliar.ts",
     "m03:avaliar:solucao": "SOLUCAO=1 tsx --env-file-if-exists=../.env scripts/m03-avaliar.ts",
-    "m03:ver": "promptfoo view"
+    "m03:ver": "promptfoo view",
+    "m04:comparar": "tsx --env-file-if-exists=../.env scripts/m04-comparar.ts",
+    "m04:comparar:solucao": "SOLUCAO=1 tsx --env-file-if-exists=../.env scripts/m04-comparar.ts"
   },
   "dependencies": {
     "@mentoria/llm": "workspace:*",

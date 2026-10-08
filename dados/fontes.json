@@ -1,0 +1,102 @@
+[
+  {
+    "nome": "lab-aurora",
+    "descricao": "Blog do Laboratório Aurora: lançamentos de modelos abertos",
+    "noticias": [
+      "n01",
+      "n21"
+    ]
+  },
+  {
+    "nome": "repositorios-oss",
+    "descricao": "Notas de versão de bibliotecas open source de IA",
+    "noticias": [
+      "n02",
+      "n22"
+    ]
+  },
+  {
+    "nome": "engenharia-pragmatica",
+    "descricao": "Blog de engenharia com tutoriais e boas práticas",
+    "noticias": [
+      "n08",
+      "n14",
+      "n27",
+      "n39"
+    ]
+  },
+  {
+    "nome": "pesquisa-academica",
+    "descricao": "Pré-prints, anais de workshops e benchmarks",
+    "noticias": [
+      "n03",
+      "n10",
+      "n16",
+      "n23",
+      "n28",
+      "n36",
+      "n40"
+    ]
+  },
+  {
+    "nome": "regulatorio",
+    "descricao": "Diário regulatório, agências e decisões judiciais",
+    "noticias": [
+      "n04",
+      "n15",
+      "n24",
+      "n32"
+    ]
+  },
+  {
+    "nome": "negocios-e-nuvem",
+    "descricao": "Portais de negócios e blogs de provedores de nuvem",
+    "noticias": [
+      "n06",
+      "n17",
+      "n25",
+      "n30",
+      "n34"
+    ]
+  },
+  {
+    "nome": "blogs-de-empresas",
+    "descricao": "Blogs de engenharia de empresas que usam IA em produção",
+    "noticias": [
+      "n11",
+      "n19",
+      "n33"
+    ]
+  },
+  {
+    "nome": "fundacoes-abertas",
+    "descricao": "Fundações e projetos abertos de modelos em português",
+    "noticias": [
+      "n18",
+      "n31",
+      "n37"
+    ]
+  },
+  {
+    "nome": "anuncios-e-lancamentos",
+    "descricao": "Comunicados de imprensa e redes sociais de startups",
+    "noticias": [
+      "n09",
+      "n13",
+      "n26",
+      "n35",
+      "n38"
+    ]
+  },
+  {
+    "nome": "variedades",
+    "descricao": "Entretenimento, esportes, cidade e estilo",
+    "noticias": [
+      "n05",
+      "n07",
+      "n12",
+      "n20",
+      "n29"
+    ]
+  }
+]

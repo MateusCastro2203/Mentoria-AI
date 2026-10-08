@@ -60,6 +60,14 @@ Bibliografia consolidada da mentoria. Cada módulo lista as suas no próprio REA
 - OWASP. *LLM01: Prompt Injection*. https://genai.owasp.org/llmrisk/llm01-prompt-injection/
 - promptfoo: configuração https://www.promptfoo.dev/docs/configuration/reference/ · provider próprio https://www.promptfoo.dev/docs/providers/custom-api/ · casos de teste https://www.promptfoo.dev/docs/configuration/test-cases/ · `llm-rubric` https://www.promptfoo.dev/docs/configuration/expected-outputs/model-graded/llm-rubric/
 
+## Skills e agentes (Módulo 04)
+
+- Anthropic (2024). *Building effective agents*. https://www.anthropic.com/engineering/building-effective-agents
+- Anthropic (2025). *Equipping agents for the real world with Agent Skills*. https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills
+- Agent Skills — especificação: https://agentskills.io/specification · repositório: https://github.com/agentskills/agentskills
+- Yao et al. (2022). *ReAct: Synergizing Reasoning and Acting in Language Models*. https://arxiv.org/abs/2210.03629
+- AI SDK — agentes: https://ai-sdk.dev/docs/agents/overview · controle do loop: https://ai-sdk.dev/docs/agents/loop-control
+
 ## Orquestração e HITL (Módulos 06–07)
 
 - LangGraph.js — interrupts: https://docs.langchain.com/oss/javascript/langgraph/interrupts
