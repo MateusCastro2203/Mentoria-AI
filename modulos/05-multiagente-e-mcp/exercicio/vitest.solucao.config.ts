@@ -1,6 +1,5 @@
-// Roda os mesmos testes contra solucao/ em vez de src/ (pnpm --filter @mentoria/curador test:solucao).
-// Redireciona imports de src/mNN/... para solucao/mNN/... SÓ quando o arquivo existe na solução:
-// arquivos fornecidos (ex.: src/m05/rss.ts) continuam vindo de src/.
+// Roda os mesmos testes contra solucao/ em vez de src/ (pnpm --filter @mentoria/ex05-mcp test:solucao).
+// Redireciona um import de src/ só quando o arquivo existe em solucao/.
 import { existsSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -14,9 +13,9 @@ const usarSolucao: Plugin = {
   name: "usar-solucao",
   enforce: "pre",
   resolveId(fonte, importador) {
-    if (!importador || !fonte.startsWith(".")) return null;
+    if (!importador || !fonte.startsWith(".") || importador.startsWith(solucao)) return null;
     const alvo = resolve(dirname(importador), fonte).replace(/\.js$/, ".ts");
-    if (!alvo.startsWith(`${src}/m`)) return null;
+    if (!alvo.startsWith(src)) return null;
     const naSolucao = alvo.replace(src, solucao);
     return existsSync(naSolucao) ? naSolucao : null;
   },

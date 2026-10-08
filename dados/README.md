@@ -48,6 +48,10 @@ Nenhum dos três pode ser publicado automaticamente, qualquer que seja a classif
 
 Dez fontes simuladas (como feeds de notícias), cada uma com uma descrição e a lista de ids das notícias que publica. Toda notícia está em exatamente uma fonte. O agente do Módulo 4 escolhe quais fontes ler a partir das descrições.
 
+## `rss/`
+
+Um feed RSS 2.0 por fonte, gerado de `fontes.json` + `noticias.json` por `pnpm gerar-rss` (não edite à mão). O servidor MCP de fontes do Módulo 5 lê estes arquivos.
+
 ## `exemplos.json`
 
 Seis exemplos rotulados para usar como *few-shot* no prompt (Módulo 3). **Não** fazem parte do conjunto de avaliação: usar o mesmo exemplo no prompt e na avaliação infla o resultado (vazamento).

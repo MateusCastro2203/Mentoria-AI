@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>fundacoes-abertas</title>
+    <description>Fundações e projetos abertos de modelos em português</description>
+    <link>https://example.com/feeds/fundacoes-abertas</link>
+    <item>
+      <guid isPermaLink="false">n18</guid>
+      <title>Modelo de embeddings multilíngue gratuito supera versões anteriores em português</title>
+      <link>https://example.com/ipe/embeddings-multilingue</link>
+      <description>O novo modelo de embeddings da Fundação Ipê foi publicado com pesos abertos e avaliação em tarefas de busca semântica em 12 idiomas, incluindo português.</description>
+      <author>Blog da Fundação Ipê</author>
+      <pubDate>Mon, 28 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n31</guid>
+      <title>Modelo multimodal de pesos abertos lê tabelas e gráficos em PDFs</title>
+      <link>https://example.com/ipe/ipe-visao</link>
+      <description>O modelo Ipê-Visão foi publicado com pesos abertos e extrai valores de tabelas e gráficos de documentos escaneados, com avaliação pública em português e inglês.</description>
+      <author>Blog da Fundação Ipê</author>
+      <pubDate>Tue, 06 Oct 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n37</guid>
+      <title>Nova versão de modelo de reconhecimento de voz melhora transcrição em português</title>
+      <link>https://example.com/sabia/voz-v2</link>
+      <description>A atualização do modelo Sabiá-Voz reduz erros em sotaques regionais e passa a identificar quem está falando, segundo a avaliação publicada pelos autores.</description>
+      <author>Blog do Projeto Sabiá</author>
+      <pubDate>Thu, 08 Oct 2026 12:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

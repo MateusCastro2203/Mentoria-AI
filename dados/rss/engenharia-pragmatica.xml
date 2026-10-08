@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>engenharia-pragmatica</title>
+    <description>Blog de engenharia com tutoriais e boas práticas</description>
+    <link>https://example.com/feeds/engenharia-pragmatica</link>
+    <item>
+      <guid isPermaLink="false">n08</guid>
+      <title>Guia prático: como versionar prompts junto com o código</title>
+      <link>https://example.com/pragmatica/versionar-prompts</link>
+      <description>O artigo mostra como guardar prompts em arquivos versionados, rodar evals a cada mudança e fazer rollback quando a qualidade cai, com exemplos em TypeScript.</description>
+      <author>Blog Engenharia Pragmática</author>
+      <pubDate>Sat, 12 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n14</guid>
+      <title>Tutorial mostra como medir custo por requisição de um chatbot em produção</title>
+      <link>https://example.com/pragmatica/custo-chatbot</link>
+      <description>O passo a passo instrumenta chamadas ao modelo, registra tokens de entrada e saída e monta um painel de custo diário por funcionalidade.</description>
+      <author>Blog Engenharia Pragmática</author>
+      <pubDate>Wed, 23 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n27</guid>
+      <title>Guia mostra como testar agentes de IA com ferramentas simuladas</title>
+      <link>https://example.com/pragmatica/testar-agentes</link>
+      <description>O artigo explica como substituir ferramentas reais por versões simuladas nos testes, limitar o número de passos do agente e verificar o caminho percorrido, com exemplos em TypeScript.</description>
+      <author>Blog Engenharia Pragmática</author>
+      <pubDate>Sun, 04 Oct 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n39</guid>
+      <title>Tutorial ensina a versionar datasets de avaliação junto com o código</title>
+      <link></link>
+      <description>O passo a passo guarda os casos de teste em arquivos no repositório, registra quem rotulou cada exemplo e roda as evals a cada mudança de prompt.</description>
+      <author>Blog sem link</author>
+      <pubDate>Thu, 08 Oct 2026 12:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

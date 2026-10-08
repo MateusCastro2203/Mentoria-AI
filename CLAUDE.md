@@ -48,6 +48,7 @@ Este repositório contém uma mentoria sobre IA aplicada criada por um AI Engine
     src/mNN/ · solucao/mNN/ · test/mNN.test.ts   → uma pasta por etapa
     evals/              → configs do promptfoo + providers que rodam o curador de verdade (a partir do M3)
     skills/             → skills no formato Agent Skills (a partir do M4; a solução fica em solucao/skills/)
+/dados/rss/             → feeds RSS gerados por `pnpm gerar-rss` (servidor MCP de fontes, M5)
     scripts/            → experimentos fornecidos por etapa (mNN:*); gravam em saidas/ (ignorado no git)
 ```
 
@@ -70,6 +71,7 @@ pnpm --filter <pacote> exec vitest run <arquivo> -t "<nome do teste>"   # um tes
 - O pacote usa o Vercel AI SDK (`ai`) com `@ai-sdk/openai-compatible`: Ollama (padrão, `http://localhost:11434/v1`) e qualquer provedor remoto compatível com a API da OpenAI usam o mesmo caminho.
 - **Evals (promptfoo) rodam o sistema de verdade**: os providers em `projeto-final/evals/` importam o código do curador (`src/` ou, com `SOLUCAO=1`, `solucao/`) e o script `m03:avaliar` lê a saída JSON do promptfoo, calcula as métricas e aplica o portão de qualidade (sai com código 1 se reprovar). O promptfoo não tem portão por taxa de acerto: ele fica no script.
 - **Testes Vitest são determinísticos e offline**: recebem um modelo mock (`MockLanguageModelV4` de `ai/test`) por injeção. Chamadas reais ao modelo ficam em scripts e evals (promptfoo), nunca nos testes de critério de feito.
+- MCP: SDK oficial v2 (`@modelcontextprotocol/server` e `/client`). Testes conectam por `InMemoryTransport` (era 2025-11-25). Pontos de entrada stdio usam `serveStdio(() => criarServidor…())`, que atende as eras 2025 e 2026-07-28; servidor stdio nunca escreve em stdout (logs em stderr). `ferramentasDoMcp` adapta tools MCP para o AI SDK.
 - Agentes usam `gerarComFerramentas` de `@mentoria/llm` (loop do AI SDK com limite de passos e parada por ferramenta). Nos testes, o modelo é um `MockLanguageModelV4` com roteiro de tool-calls.
 - Ao documentar provedores remotos, mantenha a explicação genérica (qualquer endpoint compatível com a API da OpenAI). Não recomende fornecedor nem token de API específico.
 
@@ -84,7 +86,7 @@ pnpm --filter <pacote> exec vitest run <arquivo> -t "<nome do teste>"   # um tes
 - Tudo fica no `main`, sem branch de soluções.
 - `src/` contém só enunciado e código inicial com `TODO`: os testes (`pnpm --filter <pacote> test`) **falham** até a pessoa resolver. Nunca escreva solução em `src/`.
 - A solução de referência fica em `solucao/`, no mesmo pacote, espelhando só os arquivos com `TODO` (no projeto final, `solucao/mNN/…`). Todo arquivo de solução começa com o aviso de spoiler.
-- `vitest.solucao.config.ts` redireciona por alias os imports `../src/<arquivo>.js` dos testes para `solucao/`, então os **mesmos testes** rodam contra a resposta: `pnpm --filter <pacote> test:solucao` (ou `pnpm test:solucao` na raiz). Ao criar um exercício novo, inclua o arquivo no regex do alias.
+- `vitest.solucao.config.ts` redireciona os imports de `src/` para `solucao/`, então os **mesmos testes** rodam contra a resposta: `pnpm --filter <pacote> test:solucao` (ou `pnpm test:solucao` na raiz). No projeto final e no ex05 isso é um plugin que só redireciona quando o arquivo existe em `solucao/` (arquivos fornecidos ficam em `src/`); nos ex01–ex04 é um alias com a lista de arquivos (inclua o arquivo novo no regex).
 - Ao concluir um exercício, confirme as duas coisas: `test` falha (stubs) e `test:solucao` passa.
 
 ## Ambiente

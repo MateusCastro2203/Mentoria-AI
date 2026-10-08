@@ -68,6 +68,14 @@ Bibliografia consolidada da mentoria. Cada módulo lista as suas no próprio REA
 - Yao et al. (2022). *ReAct: Synergizing Reasoning and Acting in Language Models*. https://arxiv.org/abs/2210.03629
 - AI SDK — agentes: https://ai-sdk.dev/docs/agents/overview · controle do loop: https://ai-sdk.dev/docs/agents/loop-control
 
+## Multiagente e MCP (Módulo 05)
+
+- Model Context Protocol — especificação (revisão 2026-07-28): https://modelcontextprotocol.io/specification/2026-07-28
+- SDK oficial de TypeScript (v2): https://ts.sdk.modelcontextprotocol.io/v2/
+- MCP Inspector: https://github.com/modelcontextprotocol/inspector
+- Anthropic (2025). *How we built our multi-agent research system*. https://www.anthropic.com/engineering/multi-agent-research-system
+- Cognition (2025). *Don't Build Multi-Agents*. https://cognition.com/blog/dont-build-multi-agents
+
 ## Orquestração e HITL (Módulos 06–07)
 
 - LangGraph.js — interrupts: https://docs.langchain.com/oss/javascript/langgraph/interrupts

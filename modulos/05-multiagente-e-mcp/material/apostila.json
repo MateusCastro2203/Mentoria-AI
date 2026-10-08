@@ -1,0 +1,11 @@
+{
+  "titulo": "Módulo 05 — Sistemas multiagênticos e MCP",
+  "subtitulo": "Padrões para organizar times de agentes, quando isso é exagero, e o Model Context Protocol: host, cliente, servidor, tools, resources e prompts.",
+  "fontes": [
+    { "arquivo": "modulos/05-multiagente-e-mcp/README.md", "titulo": "Visão geral", "secoes": ["Objetivos de aprendizagem", "Mensagem central"] },
+    { "arquivo": "modulos/05-multiagente-e-mcp/conceitos.md", "titulo": "Conceitos" },
+    { "arquivo": "modulos/05-multiagente-e-mcp/exercicio/README.md", "titulo": "Exercício" },
+    { "arquivo": "projeto-final/README.md", "titulo": "Projeto final — etapa M5", "secoes": ["Etapa M5 — o time de agentes e os servidores MCP"] },
+    { "arquivo": "modulos/05-multiagente-e-mcp/README.md", "titulo": "Para revisar", "secoes": ["Perguntas para discussão (15 min)", "Armadilhas comuns"] }
+  ]
+}

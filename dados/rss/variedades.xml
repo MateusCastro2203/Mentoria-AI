@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>variedades</title>
+    <description>Entretenimento, esportes, cidade e estilo</description>
+    <link>https://example.com/feeds/variedades</link>
+    <item>
+      <guid isPermaLink="false">n05</guid>
+      <title>CEO de startup de IA aparece em evento com tênis de edição limitada</title>
+      <link>https://example.com/estilo/ceo-tenis</link>
+      <description>O executivo da Nimbus IA chamou a atenção do público com um par de tênis colecionável durante a abertura de uma conferência de tecnologia.</description>
+      <author>Coluna Tech &amp; Estilo</author>
+      <pubDate>Sun, 27 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n07</guid>
+      <title>Prefeitura inaugura nova ciclovia na zona sul</title>
+      <link>https://example.com/bairro/ciclovia</link>
+      <description>A obra tem 12 km e conecta três bairros ao centro. A inauguração contou com passeio ciclístico aberto ao público.</description>
+      <author>Jornal do Bairro</author>
+      <pubDate>Sun, 20 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n12</guid>
+      <title>Time de futebol contrata novo técnico após sequência de derrotas</title>
+      <link>https://example.com/esportes/novo-tecnico</link>
+      <description>O clube anunciou o substituto nesta segunda-feira. O novo técnico estreia no próximo fim de semana.</description>
+      <author>Portal Esportivo</author>
+      <pubDate>Tue, 29 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n20</guid>
+      <title>Celebridade diz em entrevista que usa IA para escolher roupas</title>
+      <link>https://example.com/entretenimento/ia-roupas</link>
+      <description>Em programa de TV, o apresentador comentou que pede sugestões de looks a um aplicativo de IA antes de eventos.</description>
+      <author>Revista de Entretenimento</author>
+      <pubDate>Thu, 01 Oct 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n29</guid>
+      <title>Crítica: novo filme de robôs aposta em efeitos e esquece o roteiro</title>
+      <link>https://example.com/cinema/filme-robos</link>
+      <description>A produção tem cenas impressionantes de máquinas inteligentes, mas a história não convence, segundo o crítico.</description>
+      <author>Revista de Cinema</author>
+      <pubDate>Mon, 05 Oct 2026 12:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>lab-aurora</title>
+    <description>Blog do Laboratório Aurora: lançamentos de modelos abertos</description>
+    <link>https://example.com/feeds/lab-aurora</link>
+    <item>
+      <guid isPermaLink="false">n01</guid>
+      <title>Laboratório Aurora lança modelo aberto de 7B com janela de contexto de 256 mil tokens</title>
+      <link>https://example.com/aurora/aurora-7b</link>
+      <description>O modelo Aurora-7B foi publicado com pesos abertos e licença permissiva. Segundo o anúncio, ele mantém a qualidade em documentos longos e roda em uma única GPU de consumo com quantização de 4 bits.</description>
+      <author>Blog do Laboratório Aurora</author>
+      <pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n21</guid>
+      <title>Modelo aberto de 1B roda direto no celular e responde offline</title>
+      <link>https://example.com/aurora/aurora-1b-mobile</link>
+      <description>O Laboratório Aurora publicou uma versão de 1 bilhão de parâmetros do Aurora, com pesos abertos, que roda em celulares intermediários sem conexão e mantém respostas curtas em português.</description>
+      <author>Blog do Laboratório Aurora</author>
+      <pubDate>Thu, 01 Oct 2026 12:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

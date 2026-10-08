@@ -11,7 +11,8 @@
     "test": "pnpm -r --no-bail --if-present test",
     "typecheck": "pnpm -r --if-present typecheck && tsc --noEmit -p tsconfig.json",
     "test:solucao": "pnpm -r --no-bail --if-present test:solucao",
-    "material": "tsx scripts/material.ts"
+    "material": "tsx scripts/material.ts",
+    "gerar-rss": "tsx scripts/gerar-rss.ts"
   },
   "devDependencies": {
     "@marp-team/marp-cli": "^4.5.1",

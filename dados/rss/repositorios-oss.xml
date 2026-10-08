@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>repositorios-oss</title>
+    <description>Notas de versão de bibliotecas open source de IA</description>
+    <link>https://example.com/feeds/repositorios-oss</link>
+    <item>
+      <guid isPermaLink="false">n02</guid>
+      <title>Biblioteca open source Trilha simplifica evals de LLM em TypeScript</title>
+      <link>https://example.com/trilha/release-1-0</link>
+      <description>A Trilha permite descrever casos de teste em YAML e roda asserções determinísticas e LLM-as-judge a partir do terminal. A versão 1.0 adiciona integração com pipelines de CI.</description>
+      <author>Repositório Trilha</author>
+      <pubDate>Fri, 18 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n22</guid>
+      <title>Biblioteca de tracing para LLMs ganha integração com OpenTelemetry</title>
+      <link>https://example.com/rastro/opentelemetry</link>
+      <description>A biblioteca Rastro registra cada chamada ao modelo, com prompt, tokens, latência e custo, e agora exporta os dados no padrão OpenTelemetry para ferramentas de observabilidade.</description>
+      <author>Repositório Rastro</author>
+      <pubDate>Thu, 01 Oct 2026 12:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

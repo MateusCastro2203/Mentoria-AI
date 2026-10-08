@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>blogs-de-empresas</title>
+    <description>Blogs de engenharia de empresas que usam IA em produção</description>
+    <link>https://example.com/feeds/blogs-de-empresas</link>
+    <item>
+      <guid isPermaLink="false">n11</guid>
+      <title>Fintech fictícia relata corte de 40% no tempo de triagem de tickets com classificador de IA</title>
+      <link>https://example.com/fintech-exemplo/triagem-tickets</link>
+      <description>Em estudo de caso, o time de engenharia descreve como trocou regras manuais por um classificador com saída estruturada e revisão humana para casos de baixa confiança.</description>
+      <author>Blog de Engenharia da Fintech Exemplo</author>
+      <pubDate>Sat, 19 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n19</guid>
+      <title>Empresa de varejo conta como reduziu alucinações no atendimento com busca em documentos</title>
+      <link>https://example.com/varejo-exemplo/rag-atendimento</link>
+      <description>O relato descreve a migração de respostas livres para respostas baseadas em trechos recuperados da base de conhecimento, com citação obrigatória da fonte.</description>
+      <author>Blog de Tecnologia do Varejo Exemplo</author>
+      <pubDate>Wed, 30 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n33</guid>
+      <title>Empresa de logística corta custo de IA trocando modelo grande por um pequeno com roteamento</title>
+      <link>https://example.com/logistica-exemplo/roteamento-modelos</link>
+      <description>O time conta como passou a mandar só as perguntas difíceis para o modelo grande, usando cache e um classificador de roteamento, e mediu a qualidade antes e depois com um conjunto de testes.</description>
+      <author>Blog de Engenharia da Logística Exemplo</author>
+      <pubDate>Tue, 06 Oct 2026 12:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

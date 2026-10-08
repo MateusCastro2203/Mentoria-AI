@@ -12,7 +12,7 @@ Os dados são sintéticos: veja [`dados/README.md`](../dados/README.md) (notíci
 | **M2** | [02 — System One e Jev](../modulos/02-system-one-e-jev/README.md) | decisão tipada (Zod) com confiança | `test/m02.test.ts` |
 | **M3** | [03 — Prompt, Evals e Guardrails](../modulos/03-prompt-evals-guardrails/README.md) | prompt v2, resumos, guardrails e evals | `test/m03.test.ts` + `m03:avaliar` |
 | **M4** | [04 — Skills vs. Agentes](../modulos/04-skills-vs-agentes/README.md) | skill reutilizável + agente que busca fontes | `test/m04.test.ts` + `m04:comparar` |
-| M5 | 05 — Multiagente e MCP | coletor, classificador, redator, revisor via MCP local | em breve |
+| **M5** | [05 — Multiagente e MCP](../modulos/05-multiagente-e-mcp/README.md) | coletor, classificador, redator, revisor via MCP local | `test/m05.test.ts` + `m05:edicao` |
 | M6 | 06 — LangGraph.js | grafo com estado, checkpoint e arestas por confiança | em breve |
 | M7 | 07 — HITL | aprovação humana antes de publicar | em breve |
 | M8 | 08 — Deploy | execução agendada com tracing, custo, evals em CI | em breve |
@@ -141,4 +141,40 @@ Abra o relatório e responda (vamos discutir na Aula 5):
 - O código recusou algo que o agente entregou? Por quê?
 
 **Desafio extra:** instale a sua skill num agente de código compatível com Agent Skills (por exemplo, copiando a pasta para o diretório de skills da ferramenta) e peça para ele classificar uma notícia nova. A `description` foi suficiente para a skill ser ativada?
+
+## Etapa M5 — o time de agentes e os servidores MCP
+
+**Objetivo:** o curador vira um **time** com quatro papéis (coletor, classificador, redator, revisor), que acessa as fontes e publica a edição por **MCP**. As fontes agora são feeds RSS (`dados/rss/`).
+
+Implemente em `src/m05/`:
+
+1. **`servidor-fontes.ts`:** servidor MCP com as tools `listar_fontes` e `ler_fonte` (lê o RSS), o resource `noticia://{id}` e o prompt `classificar_noticia`. Nunca leia um arquivo cujo nome veio do modelo sem checar se a fonte existe.
+2. **`servidor-edicao.ts`:** `montarMarkdown` e o servidor com a tool `publicar_edicao` (grava `edicao.md`, recusa item sem fonte `https`) e o resource `edicao://ultima`.
+3. **`mcp-para-ai-sdk.ts`:** `ferramentasDoMcp`, que transforma as tools de um servidor MCP em ferramentas do AI SDK, com lista de permitidas (menor privilégio).
+4. **`time.ts`:** `montarEdicao`, a orquestração: coletar → classificar → os 10 publicáveis de maior confiança → redigir ⇄ revisar (até 2 tentativas, com o motivo da reprovação) → publicar.
+
+Fornecidos: `rss.ts` (leitor de RSS) e `papeis.ts` (os quatro papéis com LLM: o coletor é um agente com as tools do MCP de fontes; o revisor checa por código antes de chamar o juiz).
+
+**Feito =**
+1. `pnpm -F @mentoria/curador exec vitest run test/m05.test.ts` verde (offline; os servidores são testados por um cliente MCP em memória);
+2. o time roda com o modelo de verdade e publica a edição:
+
+   ```bash
+   pnpm -F @mentoria/curador m05:edicao      # grava saidas/edicao.md e saidas/m05-relatorio.md
+   ```
+
+Abra a edição e o relatório e responda (vamos discutir na Aula 6):
+
+- Quanto tempo e quantas chamadas cada papel gastou?
+- O coletor deixou alguma notícia boa para trás?
+- O revisor reprovou algo? A segunda tentativa do redator resolveu?
+- Este problema precisava de vários agentes? O que o time ganhou e o que custou em relação ao pipeline da M4?
+
+**Desafio extra:** conecte o servidor de fontes ou o de edição a um cliente MCP externo:
+
+```bash
+npx @modelcontextprotocol/inspector pnpm -F @mentoria/curador mcp:fontes
+```
+
+**Desafio extra opcional (integração externa):** escreva um servidor de edição alternativo que publique no Notion, no Slack ou por e-mail, com a mesma tool `publicar_edicao`. O time não muda uma linha: só o servidor de destino. (Exige token do serviço; não é necessário para concluir a etapa.)
 

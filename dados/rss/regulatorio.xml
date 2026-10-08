@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>regulatorio</title>
+    <description>Diário regulatório, agências e decisões judiciais</description>
+    <link>https://example.com/feeds/regulatorio</link>
+    <item>
+      <guid isPermaLink="false">n04</guid>
+      <title>Agência reguladora abre consulta pública sobre transparência em sistemas de IA de crédito</title>
+      <link>https://example.com/regulatorio/consulta-ia-credito</link>
+      <description>A proposta exige que instituições financeiras expliquem ao cliente os principais fatores de decisões automatizadas de crédito e guardem registros auditáveis por cinco anos.</description>
+      <author>Diário Regulatório</author>
+      <pubDate>Fri, 25 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n15</guid>
+      <title>Lei de proteção de dados ganha guia sobre uso de dados pessoais em treinamento de modelos</title>
+      <link>https://example.com/autoridade/guia-treinamento</link>
+      <description>O documento orienta empresas sobre base legal, anonimização e direito de oposição quando dados de clientes são usados para treinar ou ajustar modelos de IA.</description>
+      <author>Autoridade Nacional Fictícia</author>
+      <pubDate>Thu, 24 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n24</guid>
+      <title>Projeto de lei exige aviso em conteúdo gerado por IA</title>
+      <link>https://example.com/legislativo/rotulagem-ia</link>
+      <description>O texto em discussão obriga plataformas a identificar imagens, áudios e textos gerados por IA e prevê multa para quem remover o aviso.</description>
+      <author>Agência Legislativa Fictícia</author>
+      <pubDate>Fri, 02 Oct 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n32</guid>
+      <title>Tribunal decide que uso de textos protegidos para treinar modelo exige autorização</title>
+      <link>https://example.com/regulatorio/decisao-direitos-autorais</link>
+      <description>A decisão de primeira instância cabe recurso e pode afetar empresas que treinam ou ajustam modelos com conteúdo de terceiros.</description>
+      <author>Diário Regulatório</author>
+      <pubDate>Tue, 06 Oct 2026 12:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

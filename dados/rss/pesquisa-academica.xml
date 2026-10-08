@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>pesquisa-academica</title>
+    <description>Pré-prints, anais de workshops e benchmarks</description>
+    <link>https://example.com/feeds/pesquisa-academica</link>
+    <item>
+      <guid isPermaLink="false">n03</guid>
+      <title>Estudo mostra que modelos erram mais quando a informação está no meio de contextos longos</title>
+      <link>https://example.com/wbpln/contexto-longo-2026</link>
+      <description>Pesquisadores da Universidade Fictícia de Campinas repetiram experimentos de recuperação em contextos longos com modelos de 2026 e encontraram queda de acerto quando o trecho relevante fica no meio do prompt.</description>
+      <author>Anais do Workshop Brasileiro de PLN</author>
+      <pubDate>Thu, 10 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n10</guid>
+      <title>Pesquisa propõe método para reduzir alucinações recompensando respostas 'não sei'</title>
+      <link>https://example.com/horizonte/nao-sei</link>
+      <description>O trabalho altera a pontuação durante o treinamento para não punir o modelo quando ele admite incerteza e mede menos respostas inventadas em perguntas factuais.</description>
+      <author>Pré-print do Instituto Horizonte</author>
+      <pubDate>Sat, 05 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n16</guid>
+      <title>Grupo de pesquisa publica benchmark de agentes que executam tarefas em planilhas</title>
+      <link>https://example.com/delta/benchmark-planilhas</link>
+      <description>O conjunto tem 500 tarefas com gabarito verificável e mostra que os agentes testados erram mais em fórmulas encadeadas do que em formatação.</description>
+      <author>Pré-print do Laboratório Delta</author>
+      <pubDate>Sat, 26 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n23</guid>
+      <title>Estudo mostra que juízes LLM preferem a resposta que aparece primeiro</title>
+      <link>https://example.com/delta/vies-de-posicao</link>
+      <description>Pesquisadores compararam pares de respostas trocando a ordem e encontraram mudança de veredito em uma parte relevante dos casos, recomendando avaliar nas duas ordens.</description>
+      <author>Pré-print do Laboratório Delta</author>
+      <pubDate>Fri, 02 Oct 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n28</guid>
+      <title>Artigo propõe método para detectar prompt injection em documentos recuperados</title>
+      <link>https://example.com/horizonte/deteccao-injecao</link>
+      <description>O trabalho treina um classificador leve que sinaliza trechos com instruções escondidas antes de eles chegarem ao modelo e avalia o método em três conjuntos públicos.</description>
+      <author>Pré-print do Instituto Horizonte</author>
+      <pubDate>Sun, 04 Oct 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n36</guid>
+      <title>Benchmark avalia calibração de LLMs em perguntas em português</title>
+      <link>https://example.com/wbpln/calibracao-pt</link>
+      <description>O conjunto de 2 mil perguntas com gabarito mede se a confiança informada pelos modelos acompanha o acerto e mostra que todos os modelos testados são confiantes demais.</description>
+      <author>Anais do Workshop Brasileiro de PLN</author>
+      <pubDate>Wed, 07 Oct 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n40</guid>
+      <title>Estudo compara custo e qualidade de resumos gerados por modelos pequenos</title>
+      <link>http://10.0.0.5/artigos/resumos-modelos-pequenos</link>
+      <description>Os autores avaliam cinco modelos pequenos em resumos de notícias com juízes humanos e automáticos e publicam os dados.</description>
+      <author>Servidor interno de um laboratório</author>
+      <pubDate>Thu, 08 Oct 2026 12:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

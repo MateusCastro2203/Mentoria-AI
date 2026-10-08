@@ -1,0 +1,28 @@
+{
+  "name": "@mentoria/ex05-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run --exclude \"test/desafio/**\"",
+    "test:desafio": "vitest run test/desafio",
+    "test:solucao": "vitest run --config vitest.solucao.config.ts",
+    "typecheck": "tsc --noEmit",
+    "glossario": "tsx demo/glossario-stdio.ts",
+    "demo:protocolo": "tsx demo/protocolo.ts",
+    "demo:time": "tsx --env-file-if-exists=../../../.env demo/time.ts"
+  },
+  "dependencies": {
+    "@mentoria/curador": "workspace:*",
+    "@mentoria/llm": "workspace:*",
+    "@modelcontextprotocol/client": "2.3.1",
+    "@modelcontextprotocol/server": "2.3.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  }
+}

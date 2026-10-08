@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>negocios-e-nuvem</title>
+    <description>Portais de negócios e blogs de provedores de nuvem</description>
+    <link>https://example.com/feeds/negocios-e-nuvem</link>
+    <item>
+      <guid isPermaLink="false">n06</guid>
+      <title>Plataforma de nuvem reduz preço de inferência e passa a cobrar por token em cache</title>
+      <link>https://example.com/cumulus/precos-cache</link>
+      <description>A Cumulus Cloud anunciou nova tabela em que tokens de entrada reaproveitados de requisições anteriores custam uma fração do preço normal, com impacto direto em aplicações com prompts longos e repetidos.</description>
+      <author>Blog da Cumulus Cloud</author>
+      <pubDate>Tue, 15 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n17</guid>
+      <title>Investidores aportam US$ 300 milhões em empresa de chips para inferência</title>
+      <link>https://example.com/negocios/aporte-chips</link>
+      <description>A rodada será usada para ampliar a produção. O comunicado não traz detalhes técnicos, preços ou disponibilidade para desenvolvedores.</description>
+      <author>Portal de Negócios</author>
+      <pubDate>Sun, 27 Sep 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n25</guid>
+      <title>Provedor de modelos corta pela metade o preço de chamadas em lote</title>
+      <link>https://example.com/cumulus/precos-lote</link>
+      <description>A Cumulus Cloud passou a cobrar 50% menos por requisições processadas em lote, com entrega em até 24 horas, voltado a tarefas como classificação e extração em grande volume.</description>
+      <author>Blog da Cumulus Cloud</author>
+      <pubDate>Sat, 03 Oct 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n30</guid>
+      <title>Pesquisa com empresas aponta que custo é a principal barreira para levar IA à produção</title>
+      <link>https://example.com/consultoria/barreiras-ia</link>
+      <description>O levantamento ouviu líderes de tecnologia de empresas fictícias e mostra que custo de inferência e falta de avaliação confiável aparecem à frente de privacidade entre as preocupações.</description>
+      <author>Consultoria Exemplo</author>
+      <pubDate>Mon, 05 Oct 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <guid isPermaLink="false">n34</guid>
+      <title>Empresa de nuvem compra startup de banco vetorial e libera plano gratuito</title>
+      <link>https://example.com/negocios/aquisicao-banco-vetorial</link>
+      <description>Após a aquisição, o serviço de banco vetorial passa a ser gratuito até 1 milhão de vetores por conta, segundo o anúncio.</description>
+      <author>Portal de Negócios</author>
+      <pubDate>Wed, 07 Oct 2026 12:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

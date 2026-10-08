@@ -16,10 +16,17 @@
     "m03:avaliar:solucao": "SOLUCAO=1 tsx --env-file-if-exists=../.env scripts/m03-avaliar.ts",
     "m03:ver": "promptfoo view",
     "m04:comparar": "tsx --env-file-if-exists=../.env scripts/m04-comparar.ts",
-    "m04:comparar:solucao": "SOLUCAO=1 tsx --env-file-if-exists=../.env scripts/m04-comparar.ts"
+    "m04:comparar:solucao": "SOLUCAO=1 tsx --env-file-if-exists=../.env scripts/m04-comparar.ts",
+    "m05:edicao": "tsx --env-file-if-exists=../.env scripts/m05-edicao.ts",
+    "m05:edicao:solucao": "SOLUCAO=1 tsx --env-file-if-exists=../.env scripts/m05-edicao.ts",
+    "mcp:fontes": "tsx scripts/mcp-fontes.ts",
+    "mcp:edicao": "tsx scripts/mcp-edicao.ts"
   },
   "dependencies": {
     "@mentoria/llm": "workspace:*",
+    "@modelcontextprotocol/client": "2.3.1",
+    "@modelcontextprotocol/server": "2.3.1",
+    "fast-xml-parser": "5.11.2",
     "zod": "^4.6.5"
   },
   "devDependencies": {
