@@ -48,7 +48,7 @@ Rode o `m02:comparar:solucao` **antes da aula**: ele faz 40 chamadas ao modelo.
 
 ### Notas para o mentor
 
-Rodei tudo com `qwen3:4b-instruct` (Ollama 0.34.4) e o dataset de 20 notícias sintéticas. Modelo e versão mudam o resultado, então rode antes da aula.
+Rodei tudo com `qwen3:4b-instruct` (Ollama 0.34.4) e o dataset de 20 notícias sintéticas **com os rótulos da época**. No Módulo 3 o dataset cresceu para 40 notícias e dois rótulos mudaram (`n11` e `n19`), então rodar hoje dá números um pouco diferentes; os achados abaixo continuam valendo. Modelo e versão mudam o resultado, então rode antes da aula.
 
 - **Armadilha do rótulo:** com o schema `{ rotulo: enum[modelos, ferramentas, pesquisa, regulacao, mercado, irrelevante] }`, as 8 notícias relevantes entre as 12 primeiras viraram `regulacao` (só uma delas, a n04, era mesmo de regulação). No token de decisão, o modelo dava ~70% para `"IA"` e ~15–20% para `"re"` (de "relevante"). Como só `regulacao` começa com "re", a decodificação restrita completou para ela. Com o schema da M2 (`relevante` booleano primeiro, depois `categoria`), o problema some.
 - **Livre × tipado (n06):** texto livre com 71–79 tokens de saída e 3,6–4,6 s por chamada; tipado com 33 tokens e 2,2 s. Os dois erraram do mesmo jeito (`ferramentas` em vez de `mercado`). **A saída estruturada não deixou o modelo mais esperto**: na comparação completa, os dois acertaram 15 de 20 (com um parser cuidadoso para o texto livre).

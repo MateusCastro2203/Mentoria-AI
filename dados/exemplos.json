@@ -1,0 +1,56 @@
+[
+  {
+    "id": "e01",
+    "titulo": "Laboratório publica modelo de 3B treinado para responder em português jurídico",
+    "resumo": "O modelo tem pesos abertos e vem com avaliação em perguntas de provas de direito.",
+    "rotulo": {
+      "relevante": true,
+      "categoria": "modelos"
+    }
+  },
+  {
+    "id": "e02",
+    "titulo": "Framework open source facilita orquestrar chamadas a LLMs com retentativas",
+    "resumo": "A biblioteca adiciona retentativas, limites de taxa e registro de custo a qualquer provedor compatível.",
+    "rotulo": {
+      "relevante": true,
+      "categoria": "ferramentas"
+    }
+  },
+  {
+    "id": "e03",
+    "titulo": "Estudo mede quanto o resumo automático omite informações importantes",
+    "resumo": "Pesquisadores anotaram 500 resumos e encontraram omissões frequentes em textos longos.",
+    "rotulo": {
+      "relevante": true,
+      "categoria": "pesquisa"
+    }
+  },
+  {
+    "id": "e04",
+    "titulo": "Órgão regulador publica regras para uso de IA em atendimento ao consumidor",
+    "resumo": "As regras exigem que o cliente possa pedir atendimento humano a qualquer momento.",
+    "rotulo": {
+      "relevante": true,
+      "categoria": "regulacao"
+    }
+  },
+  {
+    "id": "e05",
+    "titulo": "Provedor anuncia desconto para tokens de entrada reaproveitados",
+    "resumo": "A nova tabela reduz o custo de prompts longos repetidos entre chamadas.",
+    "rotulo": {
+      "relevante": true,
+      "categoria": "mercado"
+    }
+  },
+  {
+    "id": "e06",
+    "titulo": "Empresa de IA divulga vídeo com o novo logotipo",
+    "resumo": "O vídeo apresenta a nova identidade visual da marca.",
+    "rotulo": {
+      "relevante": false,
+      "categoria": null
+    }
+  }
+]

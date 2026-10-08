@@ -48,6 +48,18 @@ Bibliografia consolidada da mentoria. Cada módulo lista as suas no próprio REA
 - Xiong et al. (2023). *Can LLMs Express Their Uncertainty?* https://arxiv.org/abs/2306.13063
 - Tam et al. (2024). *Let Me Speak Freely? A Study on the Impact of Format Restrictions on Performance of Large Language Models*. https://arxiv.org/abs/2408.02442
 
+## Prompt, evals e guardrails (Módulo 03)
+
+- Anthropic. *Use XML tags to structure your prompts*. https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags
+- OpenAI. *Prompt engineering*. https://platform.openai.com/docs/guides/prompt-engineering
+- Brown et al. (2020). *Language Models are Few-Shot Learners*. https://arxiv.org/abs/2005.14165
+- Zheng et al. (2023). *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*. https://arxiv.org/abs/2306.05685
+- Cohen, J. (1960). *A Coefficient of Agreement for Nominal Scales*. https://doi.org/10.1177/001316446002000104
+- Efron, B. (1979). *Bootstrap Methods: Another Look at the Jackknife*. https://doi.org/10.1214/aos/1176344552
+- Greshake et al. (2023). *Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection*. https://arxiv.org/abs/2302.12173
+- OWASP. *LLM01: Prompt Injection*. https://genai.owasp.org/llmrisk/llm01-prompt-injection/
+- promptfoo: configuração https://www.promptfoo.dev/docs/configuration/reference/ · provider próprio https://www.promptfoo.dev/docs/providers/custom-api/ · casos de teste https://www.promptfoo.dev/docs/configuration/test-cases/ · `llm-rubric` https://www.promptfoo.dev/docs/configuration/expected-outputs/model-graded/llm-rubric/
+
 ## Orquestração e HITL (Módulos 06–07)
 
 - LangGraph.js — interrupts: https://docs.langchain.com/oss/javascript/langgraph/interrupts

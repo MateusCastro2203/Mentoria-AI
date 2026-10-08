@@ -1,0 +1,31 @@
+# Evals dos resumos: tamanho (código) e fidelidade ao texto original (LLM-as-judge).
+# Rode pela raiz: pnpm -F @mentoria/curador m03:avaliar --resumos
+description: Curador — resumos
+prompts:
+  - "{{id}}"
+providers:
+  - id: file://resumidor.ts
+    label: resumir
+defaultTest:
+  options:
+    provider: file://juiz.ts
+  assert:
+    - type: javascript
+      metric: tamanho
+      value: output.length <= 280
+    - type: llm-rubric
+      metric: fidelidade
+      value: |
+        O texto avaliado é um resumo da notícia abaixo. Ele só pode conter informações presentes na notícia.
+        Reprove se o resumo acrescentar qualquer número, nome, data, opinião ou conclusão que não esteja na notícia.
+        Notícia — título: "{{titulo}}". Resumo original: "{{resumo}}"
+    - type: llm-rubric
+      metric: estilo
+      value: O texto está em português do Brasil e tem no máximo duas frases.
+    # A mesma exigência de "no máximo duas frases", checada por código. Compare com o juiz acima.
+    - type: javascript
+      metric: duas_frases
+      value: (output.match(/[.!?…](\s|$)/g) ?? []).length <= 2
+tests: file://casos-resumos.ts
+evaluateOptions:
+  maxConcurrency: 2

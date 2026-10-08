@@ -7,6 +7,6 @@ const solucao = fileURLToPath(new URL("./solucao/", import.meta.url));
 
 export default defineConfig({
   resolve: {
-    alias: [{ find: /^\.\.\/src\/(m\d+\/.+)\.js$/, replacement: `${solucao}$1.ts` }],
+    alias: [{ find: /^(?:\.\.\/)+src\/(m\d+\/.+)\.js$/, replacement: `${solucao}$1.ts` }],
   },
 });

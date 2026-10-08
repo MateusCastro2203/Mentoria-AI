@@ -1,0 +1,26 @@
+{
+  "name": "@mentoria/ex03-evals",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run --exclude \"test/desafio/**\"",
+    "test:desafio": "vitest run test/desafio",
+    "test:solucao": "vitest run --config vitest.solucao.config.ts",
+    "typecheck": "tsc --noEmit",
+    "demo:prompts": "tsx --env-file-if-exists=../../../.env demo/prompts.ts",
+    "demo:juiz": "tsx --env-file-if-exists=../../../.env demo/juiz.ts",
+    "demo:injecao": "tsx --env-file-if-exists=../../../.env demo/injecao.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  },
+  "dependencies": {
+    "@mentoria/curador": "workspace:*",
+    "@mentoria/llm": "workspace:*",
+    "zod": "^4.6.5"
+  }
+}

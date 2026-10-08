@@ -18,6 +18,14 @@ export interface Decisao {
   confianca: number;
 }
 
+export interface OpcoesClassificarTipado {
+  temperature?: number;
+  /** Injetado nos testes (mock). Em uso real, fica vazio e o .env decide o modelo. */
+  modelo?: LanguageModel;
+  /** Troca o prompt (o Módulo 3 usa isso para comparar versões). Padrão: montarPromptTipado. */
+  montarPrompt?: (noticia: Noticia) => { system: string; prompt: string };
+}
+
 export type ResultadoClassificacao =
   | { ok: true; decisao: Decisao }
   | { ok: false; motivo: "saida-invalida" | "inconsistente" };
@@ -36,9 +44,9 @@ export function montarPromptTipado(noticia: Noticia): { system: string; prompt: 
 
 export async function classificarTipado(
   noticia: Noticia,
-  opcoes: { temperature?: number; modelo?: LanguageModel } = {},
+  opcoes: OpcoesClassificarTipado = {},
 ): Promise<ResultadoClassificacao> {
-  const { system, prompt } = montarPromptTipado(noticia);
+  const { system, prompt } = (opcoes.montarPrompt ?? montarPromptTipado)(noticia);
   let objeto: z.infer<typeof SchemaClassificacao>;
   try {
     ({ objeto } = await gerarObjeto({

@@ -22,6 +22,14 @@ export interface Decisao {
   confianca: number;
 }
 
+export interface OpcoesClassificarTipado {
+  temperature?: number;
+  /** Injetado nos testes (mock). Em uso real, fica vazio e o .env decide o modelo. */
+  modelo?: LanguageModel;
+  /** Troca o prompt (o Módulo 3 usa isso para comparar versões). Padrão: montarPromptTipado. */
+  montarPrompt?: (noticia: Noticia) => { system: string; prompt: string };
+}
+
 export type ResultadoClassificacao =
   | { ok: true; decisao: Decisao }
   | { ok: false; motivo: "saida-invalida" | "inconsistente" };
@@ -39,7 +47,8 @@ export function montarPromptTipado(noticia: Noticia): { system: string; prompt: 
 
 /**
  * Classifica com saída estruturada:
- * 1. chama `gerarObjeto` (de @mentoria/llm) com o schema, o prompt e `temperature` (padrão 0);
+ * 1. monta o prompt com `opcoes.montarPrompt` (padrão: `montarPromptTipado`) e chama `gerarObjeto`
+ *    (de @mentoria/llm) com o schema, o prompt e `temperature` (padrão 0);
  * 2. se o modelo não respeitar o schema (gerarObjeto lança NoObjectGeneratedError), devolve
  *    { ok: false, motivo: "saida-invalida" } — outros erros (ex.: rede) devem continuar sendo lançados;
  * 3. se `relevante` for false, força `categoria` para null (regra determinística, no código);
@@ -48,7 +57,7 @@ export function montarPromptTipado(noticia: Noticia): { system: string; prompt: 
  */
 export async function classificarTipado(
   noticia: Noticia,
-  opcoes: { temperature?: number; modelo?: LanguageModel } = {},
+  opcoes: OpcoesClassificarTipado = {},
 ): Promise<ResultadoClassificacao> {
   throw new Error("TODO (M2): implemente classificarTipado");
 }

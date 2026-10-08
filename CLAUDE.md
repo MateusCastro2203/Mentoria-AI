@@ -45,6 +45,9 @@ Este repositório contém uma mentoria sobre IA aplicada criada por um AI Engine
         guia-do-mentor.md / .json → cada slide explicado em linguagem simples (termos, o que falar, respostas esperadas)
         apresentacao.pdf / apresentacao.pptx / apostila.pdf  → gerados por `pnpm material NN` (commitados)
 /projeto-final/         → projeto integrador que atravessa os módulos
+    src/mNN/ · solucao/mNN/ · test/mNN.test.ts   → uma pasta por etapa
+    evals/              → configs do promptfoo + providers que rodam o curador de verdade (a partir do M3)
+    scripts/            → experimentos fornecidos por etapa (mNN:*); gravam em saidas/ (ignorado no git)
 ```
 
 ## Comandos
@@ -64,6 +67,7 @@ pnpm --filter <pacote> exec vitest run <arquivo> -t "<nome do teste>"   # um tes
 
 - **Toda chamada a modelo passa por `@mentoria/llm`** (`packages/llm`). Exercícios e projeto final nunca importam provedores diretamente; trocar de modelo é só mudar `.env` (`LLM_BASE_URL`, `LLM_MODEL`, `LLM_API_KEY`).
 - O pacote usa o Vercel AI SDK (`ai`) com `@ai-sdk/openai-compatible`: Ollama (padrão, `http://localhost:11434/v1`) e qualquer provedor remoto compatível com a API da OpenAI usam o mesmo caminho.
+- **Evals (promptfoo) rodam o sistema de verdade**: os providers em `projeto-final/evals/` importam o código do curador (`src/` ou, com `SOLUCAO=1`, `solucao/`) e o script `m03:avaliar` lê a saída JSON do promptfoo, calcula as métricas e aplica o portão de qualidade (sai com código 1 se reprovar). O promptfoo não tem portão por taxa de acerto: ele fica no script.
 - **Testes Vitest são determinísticos e offline**: recebem um modelo mock (`MockLanguageModelV4` de `ai/test`) por injeção. Chamadas reais ao modelo ficam em scripts e evals (promptfoo), nunca nos testes de critério de feito.
 - Ao documentar provedores remotos, mantenha a explicação genérica (qualquer endpoint compatível com a API da OpenAI). Não recomende fornecedor nem token de API específico.
 

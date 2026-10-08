@@ -1,0 +1,24 @@
+{
+  "titulo": "Módulo 03 — Prompt, Evals e Guardrails",
+  "subtitulo": "Prompts estruturados, evals com dataset rotulado e métricas por classe, LLM-as-judge, regressão com portão de qualidade e guardrails no código. Com jailbreak e red-teaming como leitura de apoio.",
+  "fontes": [
+    {
+      "arquivo": "modulos/03-prompt-evals-guardrails/README.md",
+      "titulo": "Visão geral",
+      "secoes": ["Objetivos de aprendizagem", "Mensagem central"]
+    },
+    { "arquivo": "modulos/03-prompt-evals-guardrails/conceitos.md", "titulo": "Conceitos" },
+    { "arquivo": "modulos/03-prompt-evals-guardrails/exercicio/README.md", "titulo": "Exercício" },
+    {
+      "arquivo": "projeto-final/README.md",
+      "titulo": "Projeto final — etapa M3",
+      "secoes": ["Etapa M3 — prompt v2, resumos, guardrails e evals"]
+    },
+    { "arquivo": "dados/README.md", "titulo": "Guia de rotulagem", "secoes": ["Guia de rotulagem", "Casos especiais (para os guardrails do Módulo 3)", "Histórico de rótulos"] },
+    {
+      "arquivo": "modulos/03-prompt-evals-guardrails/README.md",
+      "titulo": "Para revisar",
+      "secoes": ["Perguntas para discussão (15 min)", "Armadilhas comuns"]
+    }
+  ]
+}

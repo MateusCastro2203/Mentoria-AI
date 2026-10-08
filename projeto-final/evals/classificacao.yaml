@@ -1,0 +1,15 @@
+# Evals da classificação: prompt v1 (M2) × prompt v2 (M3), com os mesmos guardrails.
+# Rode pela raiz: pnpm -F @mentoria/curador m03:avaliar   (ou m03:avaliar:solucao)
+description: Curador — classificação v1 × v2
+prompts:
+  - "{{id}}"
+providers:
+  - id: file://curador.ts
+    label: v1
+    config: { versao: v1 }
+  - id: file://curador.ts
+    label: v2
+    config: { versao: v2 }
+tests: file://casos-classificacao.ts
+evaluateOptions:
+  maxConcurrency: 2

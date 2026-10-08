@@ -93,3 +93,4 @@ pre .hljs-number, pre .hljs-literal { color: #ffb86b; }
 pre .hljs-keyword, pre .hljs-built_in, pre .hljs-title { color: #ff9e80; }
 pre .hljs-comment { color: #9aa3b2; }
 pre .hljs-punctuation, pre .hljs-meta { color: #e9e6df; }
+pre .hljs-bullet, pre .hljs-symbol, pre .hljs-operator { color: #ffb86b; }

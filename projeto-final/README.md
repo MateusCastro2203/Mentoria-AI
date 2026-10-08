@@ -10,7 +10,7 @@ Os dados são sintéticos: veja [`dados/README.md`](../dados/README.md) (notíci
 |---|---|---|---|
 | **M1** | [01 — Como LLMs funcionam](../modulos/01-como-llms-funcionam/README.md) | classificação em texto livre | `test/m01.test.ts` |
 | **M2** | [02 — System One e Jev](../modulos/02-system-one-e-jev/README.md) | decisão tipada (Zod) com confiança | `test/m02.test.ts` |
-| M3 | 03 — Prompt, Evals e Guardrails | dataset rotulado, evals, guardrails | em breve |
+| **M3** | [03 — Prompt, Evals e Guardrails](../modulos/03-prompt-evals-guardrails/README.md) | prompt v2, resumos, guardrails e evals | `test/m03.test.ts` + `m03:avaliar` |
 | M4 | 04 — Skills vs. Agentes | skill reutilizável + agente que busca fontes | em breve |
 | M5 | 05 — Multiagente e MCP | coletor, classificador, redator, revisor via MCP local | em breve |
 | M6 | 06 — LangGraph.js | grafo com estado, checkpoint e arestas por confiança | em breve |
@@ -69,7 +69,7 @@ Implemente em `src/m02/classificar-tipado.ts`:
 
 **Feito =**
 1. `pnpm -F @mentoria/curador exec vitest run test/m02.test.ts` verde (offline, com mock);
-2. a comparação roda com o modelo de verdade nas 20 notícias e grava `saidas/m02-comparacao.md` e `saidas/m02-previsoes.json`:
+2. a comparação roda com o modelo de verdade nas notícias rotuladas e grava `saidas/m02-comparacao.md` e `saidas/m02-previsoes.json`:
 
    ```bash
    pnpm -F @mentoria/curador m02:comparar
@@ -82,4 +82,33 @@ Abra o relatório e responda (vamos discutir na Aula 3):
 - Os erros são aleatórios ou têm padrão? O rótulo humano está sempre certo?
 
 **Desafio extra:** acrescente um campo `justificativa` (string curta) **antes** de `relevante` no schema e rode a comparação de novo. A acurácia mudou? E a confiança? (A ordem dos campos importa: o modelo gera o JSON da esquerda para a direita.)
+
+## Etapa M3 — prompt v2, resumos, guardrails e evals
+
+**Objetivo:** melhorar o prompt **com medição**, gerar os resumos da newsletter e garantir por código que nada inseguro seja publicado sozinho. O dataset cresceu para 40 notícias, com um guia de rotulagem e três casos especiais (injeção, sem URL, URL interna): veja [`dados/README.md`](../dados/README.md).
+
+Implemente em `src/m03/`:
+
+1. **`prompt-v2.ts` → `montarPromptV2(noticia, exemplos)`:** seções em XML (`<papel>`, `<criterios>`, `<categorias>`, `<regras>`, `<exemplos>`), critérios do guia de rotulagem, exemplos *few-shot* de `dados/exemplos.json` (nunca a própria notícia) e a notícia escapada dentro de `<noticia>`. A `classificarTipado` da M2 aceita `montarPrompt` para usar a v2.
+2. **`resumir.ts` → `resumir(noticia)`:** até 2 frases, só com fatos do original, no máximo 280 caracteres.
+3. **`guardrails.ts`:**
+   - `verificarFonte(url)`: sem URL, URL inválida, não `https` ou host não público → não verificável;
+   - `detectarInjecao(texto)`: sinais de prompt injection;
+   - `decidirPublicacao(noticia, resultado)`: `publicar`, `revisar` (fonte, injeção, saída inválida, confiança baixa) ou `descartar` (irrelevante).
+
+**Feito =**
+1. `pnpm -F @mentoria/curador exec vitest run test/m03.test.ts` verde (offline);
+2. as evals rodam com o modelo de verdade e o **portão de qualidade aprova**:
+
+   ```bash
+   pnpm -F @mentoria/curador m03:avaliar              # classificação v1 × v2 (~5 min)
+   pnpm -F @mentoria/curador m03:avaliar --resumos    # + resumos com juiz LLM (~12 min)
+   pnpm -F @mentoria/curador m03:ver                  # abre a tabela do promptfoo no navegador
+   ```
+
+   O portão reprova se o macro-F1 da v2 ficar abaixo de 0,8 ou abaixo da v1, ou se algum caso especial for publicado. O relatório fica em `saidas/m03-relatorio.md`.
+
+Traga para a Aula 4: o relatório, com os erros da v2 e as reprovações do juiz nos resumos (você concorda com ele?).
+
+**Desafio extra:** `src/m03/desafio/verificar-online.ts` → `verificarFonteOnline(url)`: a URL responde? (HEAD com timeout, testado com `fetch` simulado: `pnpm -F @mentoria/curador test:desafio`.)
 

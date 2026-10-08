@@ -84,6 +84,13 @@ describe("M2 · classificarTipado", () => {
     expect(chamadas[0].temperature).toBe(1);
   });
 
+  it("usa o montarPrompt informado no lugar do padrão", async () => {
+    const { modelo, chamadas } = mockQueResponde('{"relevante":false,"categoria":null,"confianca":0.7}');
+    await classificarTipado(noticia, { modelo, montarPrompt: () => ({ system: "SISTEMA-X", prompt: "PROMPT-Y" }) });
+    expect(textoEnviado(chamadas[0])).toContain("SISTEMA-X");
+    expect(textoEnviado(chamadas[0])).toContain("PROMPT-Y");
+  });
+
   it("força categoria null quando não é relevante", async () => {
     const { modelo } = mockQueResponde('{"relevante":false,"categoria":"ferramentas","confianca":0.15}');
     expect(await classificarTipado(noticia, { modelo })).toEqual({

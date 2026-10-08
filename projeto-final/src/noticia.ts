@@ -25,3 +25,17 @@ export function carregarNoticias(
 ): NoticiaRotulada[] {
   return JSON.parse(readFileSync(caminho, "utf8"));
 }
+
+/** Exemplo rotulado para few-shot (Módulo 3). Fica fora do conjunto de avaliação. */
+export interface Exemplo {
+  id: string;
+  titulo: string;
+  resumo: string;
+  rotulo: Rotulo;
+}
+
+export function carregarExemplos(
+  caminho = new URL("../../dados/exemplos.json", import.meta.url),
+): Exemplo[] {
+  return JSON.parse(readFileSync(caminho, "utf8"));
+}
