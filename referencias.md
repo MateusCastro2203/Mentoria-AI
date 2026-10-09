@@ -76,7 +76,16 @@ Bibliografia consolidada da mentoria. Cada módulo lista as suas no próprio REA
 - Anthropic (2025). *How we built our multi-agent research system*. https://www.anthropic.com/engineering/multi-agent-research-system
 - Cognition (2025). *Don't Build Multi-Agents*. https://cognition.com/blog/dont-build-multi-agents
 
-## Orquestração e HITL (Módulos 06–07)
+## Orquestração com LangGraph.js (Módulo 06)
+
+- LangGraph.js — visão geral: https://docs.langchain.com/oss/javascript/langgraph/overview
+- LangGraph.js — Graph API (estado, nós, arestas, `Send`): https://docs.langchain.com/oss/javascript/langgraph/graph-api
+- LangGraph.js — persistência (checkpointers, threads): https://docs.langchain.com/oss/javascript/langgraph/persistence
+- LangGraph.js — execução durável: https://docs.langchain.com/oss/javascript/langgraph/durable-execution
+- LangGraph.js — viagem no tempo: https://docs.langchain.com/oss/javascript/langgraph/use-time-travel
+- Alternativas: Mastra (https://mastra.ai/docs/workflows/overview) · OpenAI Agents SDK JS (https://openai.github.io/openai-agents-js/) · Claude Agent SDK (https://code.claude.com/docs/en/agent-sdk/overview) · Vercel AI SDK (https://ai-sdk.dev/docs/agents/overview)
+
+## HITL (Módulo 07)
 
 - LangGraph.js — interrupts: https://docs.langchain.com/oss/javascript/langgraph/interrupts
 - LangGraph.js — human-in-the-loop: https://docs.langchain.com/oss/javascript/langgraph/human-in-the-loop

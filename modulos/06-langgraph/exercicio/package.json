@@ -1,0 +1,25 @@
+{
+  "name": "@mentoria/ex06-langgraph",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run --exclude \"test/desafio/**\"",
+    "test:desafio": "vitest run test/desafio",
+    "test:solucao": "vitest run --config vitest.solucao.config.ts",
+    "typecheck": "tsc --noEmit",
+    "demo:grafo": "tsx demo/grafo.ts",
+    "demo:checkpoint": "tsx demo/checkpoint.ts"
+  },
+  "dependencies": {
+    "@langchain/core": "1.2.17",
+    "@langchain/langgraph": "1.4.21",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  }
+}

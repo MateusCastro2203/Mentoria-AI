@@ -13,7 +13,7 @@ Os dados são sintéticos: veja [`dados/README.md`](../dados/README.md) (notíci
 | **M3** | [03 — Prompt, Evals e Guardrails](../modulos/03-prompt-evals-guardrails/README.md) | prompt v2, resumos, guardrails e evals | `test/m03.test.ts` + `m03:avaliar` |
 | **M4** | [04 — Skills vs. Agentes](../modulos/04-skills-vs-agentes/README.md) | skill reutilizável + agente que busca fontes | `test/m04.test.ts` + `m04:comparar` |
 | **M5** | [05 — Multiagente e MCP](../modulos/05-multiagente-e-mcp/README.md) | coletor, classificador, redator, revisor via MCP local | `test/m05.test.ts` + `m05:edicao` |
-| M6 | 06 — LangGraph.js | grafo com estado, checkpoint e arestas por confiança | em breve |
+| **M6** | [06 — LangGraph.js](../modulos/06-langgraph/README.md) | grafo com estado, checkpoint e arestas por confiança | `test/m06.test.ts` + `m06:grafo` |
 | M7 | 07 — HITL | aprovação humana antes de publicar | em breve |
 | M8 | 08 — Deploy | execução agendada com tracing, custo, evals em CI | em breve |
 
@@ -177,4 +177,45 @@ npx @modelcontextprotocol/inspector pnpm -F @mentoria/curador mcp:fontes
 ```
 
 **Desafio extra opcional (integração externa):** escreva um servidor de edição alternativo que publique no Notion, no Slack ou por e-mail, com a mesma tool `publicar_edicao`. O time não muda uma linha: só o servidor de destino. (Exige token do serviço; não é necessário para concluir a etapa.)
+
+## Etapa M6 — o curador como grafo (LangGraph.js)
+
+**Objetivo:** o time da M5 vira um **grafo de estado**: classificações em paralelo, um caminho que depende da confiança, cota por categoria e **checkpoint** (se o processo cair, retoma de onde parou).
+
+```text
+START → coletar ─(Send × N)─► classificar ──► selecionar ─┬─(Send)─► redigir ─────┐
+           └─ sem candidatos ─► END                        ├─(Send)─► fila_humana ─┼─► publicar → END
+                                                           └─ nada a fazer ────────┘
+```
+
+Implemente em `src/m06/`:
+
+1. **`rotas.ts`:** as funções das arestas, puras e testáveis:
+   - `enviarParaClassificacao`: um `Send("classificar", { id })` por candidato, ou `END`;
+   - `selecionar`: a regra editorial (confiança ≥ limiar, até 10 itens, **no máximo 3 por categoria**; o resto vai para a revisão humana ou fica fora);
+   - `rotearPorConfianca`: `Send` para `redigir` ou para `fila_humana`, ou `"publicar"` se não houver nada.
+2. **`grafo.ts`:** `montarGrafo`, com os nós `coletar`, `classificar`, `selecionar` (junção), `redigir` (o ciclo redator ⇄ revisor), `fila_humana` e `publicar`, compilado com o checkpointer recebido.
+
+Fornecidos: `estado.ts` (o estado, com reducers que concatenam listas) e `checkpoint-arquivo.ts` (um checkpointer que grava em JSON). Os papéis são os mesmos da M5, sem mudança.
+
+**Feito =**
+1. `pnpm -F @mentoria/curador exec vitest run test/m06.test.ts` verde (offline, com papéis de mentira);
+2. o grafo roda com o modelo de verdade, cai de propósito no `publicar` e retoma do checkpoint:
+
+   ```bash
+   pnpm -F @mentoria/curador m06:grafo -- --nova --falhar   # simula o servidor de edição fora do ar
+   pnpm -F @mentoria/curador m06:grafo                      # retoma: só o publicar roda de novo
+   ```
+
+   Grava `saidas/m06-relatorio.md`, `saidas/m06-grafo.mmd` (cole em https://mermaid.live) e `saidas/m06-checkpoint.json`.
+
+Responda (vamos discutir na Aula 7):
+
+- Na retomada, quantas chamadas de cada papel aconteceram? Por quê?
+- A cota por categoria mudou a cara da edição em relação à M5?
+- Quais itens foram para a fila humana, e por quê? O que você faria com eles? (É o assunto da Aula 7.)
+
+**Desafio extra (seleção justa):** na execução de referência, o modelo deu 0,95 a todos os itens de `mercado` e 0,98 aos das outras categorias, e mercado ficou fora da edição mesmo com a cota. Mude `selecionar` para alternar as categorias (a melhor de cada, depois a segunda de cada…) e acrescente um teste que prove que toda categoria com item publicável entra na edição.
+
+**Desafio extra (checkpointer de banco):** troque `CheckpointEmArquivo` por um checkpointer de banco (`@langchain/langgraph-checkpoint-sqlite`) e repita a falha e a retomada.
 

@@ -1,0 +1,11 @@
+{
+  "titulo": "Módulo 06 — Orquestração com LangGraph.js",
+  "subtitulo": "Estado, nós, arestas condicionais e reducers; checkpoint, threads, retomada e viagem no tempo; e quando usar as alternativas.",
+  "fontes": [
+    { "arquivo": "modulos/06-langgraph/README.md", "titulo": "Visão geral", "secoes": ["Objetivos de aprendizagem", "Mensagem central"] },
+    { "arquivo": "modulos/06-langgraph/conceitos.md", "titulo": "Conceitos" },
+    { "arquivo": "modulos/06-langgraph/exercicio/README.md", "titulo": "Exercício" },
+    { "arquivo": "projeto-final/README.md", "titulo": "Projeto final — etapa M6", "secoes": ["Etapa M6 — o curador como grafo (LangGraph.js)"] },
+    { "arquivo": "modulos/06-langgraph/README.md", "titulo": "Para revisar", "secoes": ["Perguntas para discussão (15 min)", "Armadilhas comuns"] }
+  ]
+}
