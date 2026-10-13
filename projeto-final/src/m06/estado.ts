@@ -16,7 +16,7 @@ export const ItemEdicaoSchema = z.object({ id: z.string(), titulo: z.string(), c
 export const PendenciaSchema = z.object({ id: z.string(), motivo: z.string() });
 
 /** Um campo que acumula: cada atualização é concatenada ao que já existe. */
-function lista<T extends z.ZodType>(item: T) {
+export function lista<T extends z.ZodType>(item: T) {
   return new ReducedValue(z.array(item).default(() => []), {
     inputSchema: z.array(item),
     reducer: (atual: z.infer<T>[], novo: z.infer<T>[]) => atual.concat(novo),

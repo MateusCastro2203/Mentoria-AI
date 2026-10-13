@@ -87,6 +87,9 @@ Bibliografia consolidada da mentoria. Cada módulo lista as suas no próprio REA
 
 ## HITL (Módulo 07)
 
+- Feng, K. J. K., McDonald, D. W., Zhang, A. X. (2025). *Levels of Autonomy for AI Agents*. arXiv:2506.12469. https://arxiv.org/abs/2506.12469
+- Parasuraman, R., Manzey, D. H. (2010). *Complacency and Bias in Human Use of Automation: An Attentional Integration*. Human Factors, 52(3), 381–410. https://doi.org/10.1177/0018720810376055
+
 - LangGraph.js — interrupts: https://docs.langchain.com/oss/javascript/langgraph/interrupts
 - LangGraph.js — human-in-the-loop: https://docs.langchain.com/oss/javascript/langgraph/human-in-the-loop
 

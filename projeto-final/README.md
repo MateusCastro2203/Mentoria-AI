@@ -14,7 +14,7 @@ Os dados são sintéticos: veja [`dados/README.md`](../dados/README.md) (notíci
 | **M4** | [04 — Skills vs. Agentes](../modulos/04-skills-vs-agentes/README.md) | skill reutilizável + agente que busca fontes | `test/m04.test.ts` + `m04:comparar` |
 | **M5** | [05 — Multiagente e MCP](../modulos/05-multiagente-e-mcp/README.md) | coletor, classificador, redator, revisor via MCP local | `test/m05.test.ts` + `m05:edicao` |
 | **M6** | [06 — LangGraph.js](../modulos/06-langgraph/README.md) | grafo com estado, checkpoint e arestas por confiança | `test/m06.test.ts` + `m06:grafo` |
-| M7 | 07 — HITL | aprovação humana antes de publicar | em breve |
+| **M7** | [07 — HITL](../modulos/07-hitl/README.md) | pausas humanas por item e aprovação da edição | `test/m07.test.ts` + `m07:edicao` |
 | M8 | 08 — Deploy | execução agendada com tracing, custo, evals em CI | em breve |
 
 Rodar os testes de uma etapa:
@@ -218,4 +218,43 @@ Responda (vamos discutir na Aula 7):
 **Desafio extra (seleção justa):** na execução de referência, o modelo deu 0,95 a todos os itens de `mercado` e 0,98 aos das outras categorias, e mercado ficou fora da edição mesmo com a cota. Mude `selecionar` para alternar as categorias (a melhor de cada, depois a segunda de cada…) e acrescente um teste que prove que toda categoria com item publicável entra na edição.
 
 **Desafio extra (checkpointer de banco):** troque `CheckpointEmArquivo` por um checkpointer de banco (`@langchain/langgraph-checkpoint-sqlite`) e repita a falha e a retomada.
+
+## Etapa M7 — humanos no circuito
+
+**Objetivo:** a `fila_humana` da M6 vira uma **pausa de verdade**. O grafo para em cada item incerto e, antes de publicar, na edição inteira; uma pessoa aprova, edita ou rejeita pelo terminal, quando puder (a pausa fica salva no checkpoint).
+
+```text
+… selecionar ─┬─(Send)─► redigir ──────────────┐
+              ├─(Send)─► revisao_humana ⏸ ─────┼─► aprovar_edicao ⏸ ─► publicar → END
+              └─ nada a fazer ─────────────────┘
+```
+
+Implemente em `src/m07/`:
+
+1. **`decisoes.ts`:** funções puras:
+   - `aplicarDecisaoItem`: aprovar, editar (categoria, título) ou rejeitar um item, validando a resposta com schema;
+   - `aplicarDecisaoEdicao`: aprovar, editar (remover itens, reescrever resumos) ou rejeitar a edição;
+   - `metricasDeRevisao`: pausas, taxa de intervenção, taxa de override e tempo médio de decisão.
+2. **`grafo.ts`:** `montarGrafoHitl`, o grafo da M6 com os nós `revisao_humana` (um `interrupt()` por item, **antes** de qualquer chamada ao modelo) e `aprovar_edicao`.
+
+Fornecidos: `estado.ts` (estado, formatos de pergunta e resposta, `pausasPendentes`) e `redacao.ts` (o ciclo redator ⇄ revisor como função).
+
+**Feito =**
+1. `pnpm -F @mentoria/curador exec vitest run test/m07.test.ts` verde (offline);
+2. uma edição revisada por você e publicada:
+
+   ```bash
+   pnpm -F @mentoria/curador m07:edicao -- --nova   # roda até a 1ª pausa e pergunta; [s] sai e deixa pausado
+   pnpm -F @mentoria/curador m07:edicao             # continua de onde parou
+   ```
+
+   Grava `saidas/m07-relatorio.md` com as decisões e as métricas.
+
+Responda (vamos discutir na Aula 8):
+
+- Quantas pausas, qual a taxa de intervenção e de override? Você mudou alguma decisão da máquina?
+- Algum item que parou não precisava parar? Algum que passou direto deveria ter parado?
+- Que parte você deixaria 100% automática numa versão agendada (Aula 8)?
+
+**Desafio extra:** troque o terminal por outra "tela" (uma página local, um bot de chat): o grafo não muda, só quem chama `Command({ resume })`.
 

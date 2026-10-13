@@ -21,6 +21,8 @@
     "m05:edicao:solucao": "SOLUCAO=1 tsx --env-file-if-exists=../.env scripts/m05-edicao.ts",
     "m06:grafo": "tsx --env-file-if-exists=../.env scripts/m06-grafo.ts",
     "m06:grafo:solucao": "SOLUCAO=1 tsx --env-file-if-exists=../.env scripts/m06-grafo.ts",
+    "m07:edicao": "tsx --env-file-if-exists=../.env scripts/m07-edicao.ts",
+    "m07:edicao:solucao": "SOLUCAO=1 tsx --env-file-if-exists=../.env scripts/m07-edicao.ts",
     "mcp:fontes": "tsx scripts/mcp-fontes.ts",
     "mcp:edicao": "tsx scripts/mcp-edicao.ts"
   },

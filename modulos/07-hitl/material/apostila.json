@@ -1,0 +1,11 @@
+{
+  "titulo": "Módulo 07 — Human-in-the-loop e automação",
+  "subtitulo": "Por que e onde pôr uma pessoa no circuito, níveis de autonomia, interrupt() e Command, as armadilhas da retomada e como medir a revisão.",
+  "fontes": [
+    { "arquivo": "modulos/07-hitl/README.md", "titulo": "Visão geral", "secoes": ["Objetivos de aprendizagem", "Mensagem central"] },
+    { "arquivo": "modulos/07-hitl/conceitos.md", "titulo": "Conceitos" },
+    { "arquivo": "modulos/07-hitl/exercicio/README.md", "titulo": "Exercício" },
+    { "arquivo": "projeto-final/README.md", "titulo": "Projeto final — etapa M7", "secoes": ["Etapa M7 — humanos no circuito"] },
+    { "arquivo": "modulos/07-hitl/README.md", "titulo": "Para revisar", "secoes": ["Perguntas para discussão (15 min)", "Armadilhas comuns"] }
+  ]
+}
