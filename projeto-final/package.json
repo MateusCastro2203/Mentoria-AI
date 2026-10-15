@@ -24,7 +24,12 @@
     "m07:edicao": "tsx --env-file-if-exists=../.env scripts/m07-edicao.ts",
     "m07:edicao:solucao": "SOLUCAO=1 tsx --env-file-if-exists=../.env scripts/m07-edicao.ts",
     "mcp:fontes": "tsx scripts/mcp-fontes.ts",
-    "mcp:edicao": "tsx scripts/mcp-edicao.ts"
+    "mcp:edicao": "tsx scripts/mcp-edicao.ts",
+    "m08:dev": "wrangler dev --test-scheduled",
+    "m08:dev:solucao": "wrangler dev worker/curador.solucao.ts --test-scheduled",
+    "m08:avaliar": "tsx --env-file-if-exists=../.env scripts/m08-avaliar.ts",
+    "m08:avaliar:solucao": "SOLUCAO=1 tsx --env-file-if-exists=../.env scripts/m08-avaliar.ts",
+    "m08:operar": "tsx scripts/m08-operar.ts"
   },
   "dependencies": {
     "@langchain/core": "1.2.17",
@@ -41,7 +46,8 @@
     "promptfoo": "^0.124.0",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",
-    "vitest": "^5.0.3"
+    "vitest": "^5.0.3",
+    "wrangler": "4.143.1"
   },
   "exports": {
     ".": "./src/noticia.ts",

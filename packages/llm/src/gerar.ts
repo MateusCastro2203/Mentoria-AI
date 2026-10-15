@@ -2,6 +2,7 @@ import { generateText, hasToolCall, Output, stepCountIs, type LanguageModel, typ
 import type { z } from "zod";
 import { lerConfig, type ConfigLlm } from "./config.js";
 import { criarModelo, NOME_PROVEDOR, type TokenBruto } from "./modelo.js";
+import { emitir, type EventoDeChamada } from "./observar.js";
 
 export interface OpcoesGeracao {
   prompt: string;
@@ -12,6 +13,8 @@ export interface OpcoesGeracao {
   /** Injeta um modelo pronto (ex.: mock nos testes). Se omitido, usa `criarModelo(config)`. */
   modelo?: LanguageModel;
   config?: ConfigLlm;
+  /** Quantas vezes o AI SDK tenta de novo sozinho em erro transitório (padrão do SDK: 2). Use 0 se você tem o seu retry. */
+  retentativas?: number;
 }
 
 export interface Uso {
@@ -47,23 +50,44 @@ export async function gerarObjeto<S extends z.ZodType>(
 async function chamar(opcoes: OpcoesGeracao, output?: Output.Output) {
   const config = opcoes.config ?? lerConfig();
   const modelo = opcoes.modelo ?? criarModelo(config, { logprobs: opcoes.logprobs });
-  const inicio = performance.now();
-  const resultado = await generateText({
-    model: modelo,
-    system: opcoes.system,
-    prompt: opcoes.prompt,
-    temperature: opcoes.temperature,
-    ...(output ? { output } : {}),
-    providerOptions: config.reasoningEffort
-      ? { [NOME_PROVEDOR]: { reasoningEffort: config.reasoningEffort } }
-      : undefined,
-  });
-  const uso: Uso = {
-    tokensEntrada: resultado.usage.inputTokens,
-    tokensSaida: resultado.usage.outputTokens,
-    latenciaMs: Math.round(performance.now() - inicio),
-  };
-  return { resultado, uso };
+  const resultado = await observado(output ? "objeto" : "texto", modelo, () =>
+    generateText({
+      model: modelo,
+      system: opcoes.system,
+      prompt: opcoes.prompt,
+      temperature: opcoes.temperature,
+      maxRetries: opcoes.retentativas,
+      ...(output ? { output } : {}),
+      providerOptions: config.reasoningEffort
+        ? { [NOME_PROVEDOR]: { reasoningEffort: config.reasoningEffort } }
+        : undefined,
+    }),
+  );
+  return { resultado: resultado.valor, uso: resultado.uso };
+}
+
+/** Mede a chamada e emite o evento de observabilidade (também quando ela falha). */
+async function observado<T extends { usage: { inputTokens?: number; outputTokens?: number } }>(
+  operacao: EventoDeChamada["operacao"],
+  modelo: LanguageModel,
+  fn: () => Promise<T>,
+): Promise<{ valor: T; uso: Uso }> {
+  const nome = typeof modelo === "string" ? modelo : modelo.modelId;
+  const inicio = new Date().toISOString();
+  const t0 = performance.now();
+  try {
+    const valor = await fn();
+    const uso: Uso = {
+      tokensEntrada: valor.usage.inputTokens,
+      tokensSaida: valor.usage.outputTokens,
+      latenciaMs: Math.round(performance.now() - t0),
+    };
+    emitir({ operacao, modelo: nome, inicio, ...uso });
+    return { valor, uso };
+  } catch (e) {
+    emitir({ operacao, modelo: nome, inicio, latenciaMs: Math.round(performance.now() - t0), erro: e instanceof Error ? e.message : String(e) });
+    throw e;
+  }
 }
 
 function extrairLogprobs(metadata: unknown): LogprobToken[] | undefined {
@@ -99,29 +123,24 @@ export async function gerarComFerramentas(
   opcoes: OpcoesFerramentas,
 ): Promise<{ texto: string; passos: number; chamadas: ChamadaDeFerramenta[]; uso: Uso }> {
   const config = opcoes.config ?? lerConfig();
-  const inicio = performance.now();
-  const resultado = await generateText({
-    model: opcoes.modelo ?? criarModelo(config),
-    system: opcoes.system,
-    prompt: opcoes.prompt,
-    temperature: opcoes.temperature,
-    tools: opcoes.ferramentas,
-    stopWhen: [stepCountIs(opcoes.maxPassos), ...(opcoes.pararAoChamar ? [hasToolCall(opcoes.pararAoChamar)] : [])],
-    providerOptions: config.reasoningEffort
-      ? { [NOME_PROVEDOR]: { reasoningEffort: config.reasoningEffort } }
-      : undefined,
-  });
+  const modelo = opcoes.modelo ?? criarModelo(config);
+  // No AI SDK 7, `usage` já é a soma de todos os passos do loop.
+  const { valor: resultado, uso } = await observado("ferramentas", modelo, () =>
+    generateText({
+      model: modelo,
+      system: opcoes.system,
+      prompt: opcoes.prompt,
+      temperature: opcoes.temperature,
+      maxRetries: opcoes.retentativas,
+      tools: opcoes.ferramentas,
+      stopWhen: [stepCountIs(opcoes.maxPassos), ...(opcoes.pararAoChamar ? [hasToolCall(opcoes.pararAoChamar)] : [])],
+      providerOptions: config.reasoningEffort
+        ? { [NOME_PROVEDOR]: { reasoningEffort: config.reasoningEffort } }
+        : undefined,
+    }),
+  );
   const chamadas = resultado.steps.flatMap((passo, i) =>
     passo.toolResults.map((r) => ({ passo: i + 1, ferramenta: r.toolName, entrada: r.input, saida: r.output })),
   );
-  return {
-    texto: resultado.text,
-    passos: resultado.steps.length,
-    chamadas,
-    uso: {
-      tokensEntrada: resultado.totalUsage.inputTokens,
-      tokensSaida: resultado.totalUsage.outputTokens,
-      latenciaMs: Math.round(performance.now() - inicio),
-    },
-  };
+  return { texto: resultado.text, passos: resultado.steps.length, chamadas, uso };
 }

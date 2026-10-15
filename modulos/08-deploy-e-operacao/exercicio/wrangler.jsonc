@@ -1,0 +1,21 @@
+// Exercício 08: o resumo diário de chamados como Cloudflare Worker.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "resumo-de-chamados",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-09-18",
+  "compatibility_flags": ["nodejs_compat"],
+  // Todo dia, 8h UTC.
+  "triggers": { "crons": ["0 8 * * *"] },
+  // No local, o wrangler simula o KV. Para publicar: wrangler kv namespace create RESUMOS e troque o id.
+  "kv_namespaces": [{ "binding": "RESUMOS", "id": "troque-pelo-id-do-seu-namespace" }],
+  "observability": { "enabled": true },
+  "vars": {
+    "PRECO_ENTRADA_POR_MILHAO": "0",
+    "PRECO_SAIDA_POR_MILHAO": "0",
+    "ORCAMENTO": "0.01",
+    "SIMULAR_FALHAS": "0",
+    "LLM_BASE_URL": "http://localhost:11434/v1",
+    "LLM_MODEL": "qwen3:4b-instruct"
+  }
+}

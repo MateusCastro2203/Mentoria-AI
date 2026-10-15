@@ -1,0 +1,29 @@
+// O curador como Cloudflare Worker (Módulo 8). Local: pnpm -F @mentoria/curador m08:dev
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "curador-ia",
+  "main": "worker/curador.ts",
+  "compatibility_date": "2026-09-18",
+  // AsyncLocalStorage (LangGraph e o rastreio) e process.env preenchido com vars e segredos.
+  "compatibility_flags": ["nodejs_compat"],
+  // Não há disco no Workers: feeds e skill entram no bundle como texto.
+  "rules": [{ "type": "Text", "globs": ["**/*.md", "**/*.xml"], "fallthrough": true }],
+  // Segunda-feira, 9h UTC. Teste local: wrangler dev --test-scheduled + /cdn-cgi/local/scheduled.
+  "triggers": { "crons": ["0 9 * * 1"] },
+  // Checkpoints, edições, execuções e versões do prompt. No local, o wrangler simula (pasta .wrangler/).
+  // Para publicar: wrangler kv namespace create CURADOR e troque o id.
+  "kv_namespaces": [{ "binding": "CURADOR", "id": "troque-pelo-id-do-seu-namespace" }],
+  "observability": { "enabled": true },
+  "vars": {
+    // No plano gratuito, uma execução pode fazer até 50 subrequests (cada chamada ao modelo é uma).
+    // 8 notícias cabem; 32 não. Veja a tabela de limites no README do módulo.
+    "MAX_NOTICIAS": "8",
+    "REVISAR_EDICAO": "sim",
+    // Preço por milhão de tokens do SEU provedor (modelo local: 0). Consulte a página de preços dele.
+    "PRECO_ENTRADA_POR_MILHAO": "0",
+    "PRECO_SAIDA_POR_MILHAO": "0",
+    // Local: o Ollama da sua máquina. Publicado, o Worker precisa de um endpoint acessível pela internet.
+    "LLM_BASE_URL": "http://localhost:11434/v1",
+    "LLM_MODEL": "qwen3:4b-instruct"
+  }
+}

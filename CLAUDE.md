@@ -50,6 +50,7 @@ Este repositório contém uma mentoria sobre IA aplicada criada por um AI Engine
     skills/             → skills no formato Agent Skills (a partir do M4; a solução fica em solucao/skills/)
 /dados/rss/             → feeds RSS gerados por `pnpm gerar-rss` (servidor MCP de fontes, M5)
     scripts/            → experimentos fornecidos por etapa (mNN:*); gravam em saidas/ (ignorado no git)
+    worker/ · wrangler.jsonc → o curador como Cloudflare Worker (M8)
 ```
 
 ## Comandos
@@ -75,6 +76,8 @@ pnpm --filter <pacote> exec vitest run <arquivo> -t "<nome do teste>"   # um tes
 - Agentes usam `gerarComFerramentas` de `@mentoria/llm` (loop do AI SDK com limite de passos e parada por ferramenta). Nos testes, o modelo é um `MockLanguageModelV4` com roteiro de tool-calls.
 - LangGraph.js 1.4 (`@langchain/langgraph`): estado com `StateSchema` + campos Zod; listas acumulam com `ReducedValue`. Fan-out com `Send`. Armadilhas: aresta condicional logo depois de um fan-out roda uma vez por ramo (use um nó de junção ligado por aresta normal); nome de nó não pode ser igual a campo do estado. O tipo do grafo compilado é enorme: os stubs devolvem uma interface própria (`GrafoCurador`, `GrafoTriagem`). Testes usam `MemorySaver`; o script usa `CheckpointEmArquivo` (`src/m06/checkpoint-arquivo.ts`). Retomar = `invoke(null, config)` na mesma thread.
 - HITL (M7): `interrupt(valor)` + `new Command({ resume })`; o resultado traz `__interrupt__` com `{ id, value }`; várias pausas em paralelo → `resume` como mapa `id → resposta` (dá para responder só algumas). Ao retomar, o nó reexecuta desde o começo: nada de efeito externo ou LLM antes do `interrupt()`. Resposta humana validada com Zod.
+- Deploy (M8): o curador roda como Cloudflare Worker (`projeto-final/wrangler.jsonc`, entradas em `projeto-final/worker/`: `curador.ts` usa `src/`, `curador.solucao.ts` usa `solucao/`). O wrangler empacota a entrada `browser` do LangGraph: `worker/recursos.ts` liga o AsyncLocalStorage na mão (sem isso, `interrupt()` falha). No Workers, `import.meta.url` não é `file:`: nada de calcular caminho de arquivo no carregamento do módulo. Arquivos de dados entram como texto (`rules` Text). Teste local: `wrangler dev --test-scheduled` + `/cdn-cgi/local/scheduled?cron=…&time=…`. Observabilidade: `observarChamadas`/`comAtributos` no `@mentoria/llm`. No projeto final, arquivo de `solucao/mNN/` não pode importar o arquivo de mesmo nome em `src/` (o plugin redireciona e vira import circular): tipos fornecidos ficam em arquivos próprios (`tipos-*.ts`).
+- CI: `.github/workflows/ci.yml` (typecheck + `test:solucao` em todo push) e `eval-prompt.yml` (Ollama no runner + `m08:avaliar:solucao`, quando a skill ou a eval mudam).
 - Ao documentar provedores remotos, mantenha a explicação genérica (qualquer endpoint compatível com a API da OpenAI). Não recomende fornecedor nem token de API específico.
 
 ## Restrições de formato

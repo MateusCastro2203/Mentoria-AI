@@ -3,6 +3,7 @@ packages:
   - modulos/*/exercicio
   - projeto-final
 
-# esbuild traz o binário via @esbuild/<plataforma>; o script de build não é necessário.
+# esbuild e workerd trazem o binário via pacotes por plataforma; o script de build não é necessário.
 allowBuilds:
   esbuild: false
+  workerd: false

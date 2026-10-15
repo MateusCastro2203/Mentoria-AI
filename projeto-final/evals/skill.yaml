@@ -1,0 +1,12 @@
+# Eval de UMA versão da skill (o prompt do classificador em produção, M8).
+# Rode pela raiz: pnpm -F @mentoria/curador m08:avaliar -- --pasta <pasta da skill>
+description: Curador — versão da skill
+prompts:
+  - "{{id}}"
+providers:
+  - id: file://curador.ts
+    label: skill
+    config: { versao: skill }
+tests: file://casos-classificacao.ts
+evaluateOptions:
+  maxConcurrency: 2

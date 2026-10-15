@@ -1,0 +1,11 @@
+{
+  "titulo": "Módulo 08 — Deploy e operação",
+  "subtitulo": "O curador como Cloudflare Worker agendado: limites da plataforma, rastreio de custo e latência, versões do prompt com portão e rollback, evals em CI e um job que aguenta produção.",
+  "fontes": [
+    { "arquivo": "modulos/08-deploy-e-operacao/README.md", "titulo": "Visão geral", "secoes": ["Objetivos de aprendizagem", "Mensagem central"] },
+    { "arquivo": "modulos/08-deploy-e-operacao/conceitos.md", "titulo": "Conceitos" },
+    { "arquivo": "modulos/08-deploy-e-operacao/exercicio/README.md", "titulo": "Exercício" },
+    { "arquivo": "projeto-final/README.md", "titulo": "Projeto final — etapa M8", "secoes": ["Etapa M8 — o curador em produção (Cloudflare Workers)"] },
+    { "arquivo": "modulos/08-deploy-e-operacao/README.md", "titulo": "Para revisar", "secoes": ["Perguntas para discussão (15 min)", "Armadilhas comuns"] }
+  ]
+}

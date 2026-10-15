@@ -1,0 +1,28 @@
+{
+  "name": "@mentoria/ex08-operacao",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run --exclude \"test/desafio/**\"",
+    "test:desafio": "vitest run test/desafio",
+    "test:solucao": "vitest run --config vitest.solucao.config.ts",
+    "typecheck": "tsc --noEmit",
+    "demo:falhas": "tsx demo/falhas.ts",
+    "demo:falhas:solucao": "SOLUCAO=1 tsx demo/falhas.ts",
+    "dev": "wrangler dev --test-scheduled",
+    "dev:solucao": "wrangler dev src/worker.solucao.ts --test-scheduled"
+  },
+  "dependencies": {
+    "@mentoria/llm": "workspace:*",
+    "ai": "^7.0.128",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3",
+    "wrangler": "4.143.1"
+  }
+}

@@ -1,0 +1,12 @@
+[
+  { "id": "c01", "aberto": "2026-10-13", "prioridade": "alta", "titulo": "Lembrete por SMS não chega", "texto": "Desde ontem à noite os clientes da clínica não recebem o lembrete por SMS da consulta. O e-mail chega normalmente." },
+  { "id": "c02", "aberto": "2026-10-13", "prioridade": "media", "titulo": "Horário duplicado na agenda", "texto": "Ao arrastar um agendamento para outro dia, ele aparece nos dois dias até recarregar a página." },
+  { "id": "c03", "aberto": "2026-10-13", "prioridade": "baixa", "titulo": "Dúvida sobre exportar relatório", "texto": "Quero exportar os atendimentos do mês em planilha. Onde fica essa opção?" },
+  { "id": "c04", "aberto": "2026-10-13", "prioridade": "alta", "titulo": "Lembretes por SMS falhando", "texto": "Nenhum paciente recebeu SMS hoje. Já conferi o cadastro e os telefones estão certos." },
+  { "id": "c05", "aberto": "2026-10-14", "prioridade": "media", "titulo": "Fuso horário errado no convite", "texto": "O convite de calendário enviado ao cliente mostra uma hora a menos que o horário marcado." },
+  { "id": "c06", "aberto": "2026-10-14", "prioridade": "baixa", "titulo": "Sugestão: tema escuro", "texto": "Seria ótimo ter um tema escuro para quem usa o sistema à noite na recepção." },
+  { "id": "c07", "aberto": "2026-10-14", "prioridade": "media", "titulo": "Convite com horário adiantado", "texto": "Clientes chegaram uma hora antes porque o convite no celular mostrava outro horário." },
+  { "id": "c08", "aberto": "2026-10-14", "prioridade": "alta", "titulo": "Cobrança em duplicidade", "texto": "Fui cobrado duas vezes na fatura de outubro do plano mensal." },
+  { "id": "c09", "aberto": "2026-10-15", "prioridade": "baixa", "titulo": "Como trocar a senha", "texto": "Não encontro onde alterar a senha do usuário da recepção." },
+  { "id": "c10", "aberto": "2026-10-15", "prioridade": "media", "titulo": "Relatório lento", "texto": "O relatório anual demora mais de um minuto para abrir e às vezes dá erro." }
+]

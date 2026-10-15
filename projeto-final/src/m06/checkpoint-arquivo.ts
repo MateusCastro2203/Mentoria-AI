@@ -9,7 +9,7 @@ import { MemorySaver } from "@langchain/langgraph";
 type Arvore = Record<string, unknown>;
 
 // Uint8Array não cabe em JSON: vira { $bytes: "<base64>" }.
-const paraJson = (v: unknown): unknown =>
+export const paraJson = (v: unknown): unknown =>
   v instanceof Uint8Array
     ? { $bytes: Buffer.from(v).toString("base64") }
     : Array.isArray(v)
@@ -17,7 +17,7 @@ const paraJson = (v: unknown): unknown =>
       : v && typeof v === "object"
         ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, paraJson(x)]))
         : v;
-const deJson = (v: unknown): unknown =>
+export const deJson = (v: unknown): unknown =>
   v && typeof v === "object" && "$bytes" in (v as Arvore)
     ? new Uint8Array(Buffer.from(String((v as Arvore).$bytes), "base64"))
     : Array.isArray(v)

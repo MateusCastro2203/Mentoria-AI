@@ -11,3 +11,11 @@ export {
   type Uso,
   type LogprobToken,
 } from "./gerar.js";
+export {
+  observarChamadas,
+  comAtributos,
+  atributosAtuais,
+  type EventoDeChamada,
+  type Atributos,
+  type Ouvinte,
+} from "./observar.js";

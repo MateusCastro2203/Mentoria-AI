@@ -1,0 +1,29 @@
+# Módulo 8 — o CI de todo push: rápido, offline e determinístico (modelo simulado nos testes).
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  testes:
+    name: Typecheck e testes (offline)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6 # usa a versão de "packageManager" do package.json
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      # Os exercícios em src/ falham de propósito (são os TODOs). O CI valida as soluções de referência.
+      # No seu fork, depois de resolver os exercícios, troque por: pnpm test
+      - run: pnpm test:solucao
+      - run: pnpm -F @mentoria/llm test

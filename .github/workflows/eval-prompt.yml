@@ -1,0 +1,51 @@
+# Módulo 8 — eval com o modelo de verdade, só quando o prompt (a skill) ou a eval mudam.
+# É lenta (o modelo roda na CPU do runner) e por isso não roda em todo push. Reprovou no portão → o PR fica vermelho.
+name: Eval do prompt
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "projeto-final/skills/**"
+      - "projeto-final/solucao/skills/**"
+      - "projeto-final/evals/**"
+      - "dados/noticias.json"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: eval-prompt-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  eval:
+    name: Eval da skill (portão de qualidade)
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      LLM_BASE_URL: http://localhost:11434/v1
+      LLM_MODEL: qwen3:4b-instruct
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Instalar e subir o Ollama
+        run: |
+          curl -fsSL https://ollama.com/install.sh | sh
+          (ollama serve > /tmp/ollama.log 2>&1 &)
+          for i in $(seq 1 60); do curl -sf http://localhost:11434/ > /dev/null && break; sleep 1; done
+      - name: Baixar o modelo
+        run: ollama pull "$LLM_MODEL"
+      # No seu fork, avalie a SUA skill: pnpm -F @mentoria/curador m08:avaliar
+      - name: Eval da skill
+        run: pnpm -F @mentoria/curador m08:avaliar:solucao
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: avaliacao-do-prompt
+          path: projeto-final/saidas/m08-*

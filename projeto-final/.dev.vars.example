@@ -1,0 +1,3 @@
+# Copie para .dev.vars (ignorado pelo git). O wrangler dev lê daqui os segredos locais.
+EDITOR_TOKEN=troque-este-token
+# LLM_API_KEY=

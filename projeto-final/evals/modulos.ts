@@ -13,3 +13,6 @@ export const { decidirPublicacao }: typeof import("../src/m03/guardrails.js") = 
 export const { resumir }: typeof import("../src/m03/resumir.js") = usarSolucao
   ? await import("../solucao/m03/resumir.js")
   : await import("../src/m03/resumir.js");
+export const { lerSkill, montarPromptDaSkill }: typeof import("../src/m04/skill.js") = usarSolucao
+  ? await import("../solucao/m04/skill.js")
+  : await import("../src/m04/skill.js");

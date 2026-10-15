@@ -15,7 +15,7 @@ Os dados são sintéticos: veja [`dados/README.md`](../dados/README.md) (notíci
 | **M5** | [05 — Multiagente e MCP](../modulos/05-multiagente-e-mcp/README.md) | coletor, classificador, redator, revisor via MCP local | `test/m05.test.ts` + `m05:edicao` |
 | **M6** | [06 — LangGraph.js](../modulos/06-langgraph/README.md) | grafo com estado, checkpoint e arestas por confiança | `test/m06.test.ts` + `m06:grafo` |
 | **M7** | [07 — HITL](../modulos/07-hitl/README.md) | pausas humanas por item e aprovação da edição | `test/m07.test.ts` + `m07:edicao` |
-| M8 | 08 — Deploy | execução agendada com tracing, custo, evals em CI | em breve |
+| **M8** | [08 — Deploy e operação](../modulos/08-deploy-e-operacao/README.md) | Worker agendado, rastro e custo, versões do prompt, CI | `test/m08.test.ts` + `m08:dev` |
 
 Rodar os testes de uma etapa:
 
@@ -257,4 +257,76 @@ Responda (vamos discutir na Aula 8):
 - Que parte você deixaria 100% automática numa versão agendada (Aula 8)?
 
 **Desafio extra:** troque o terminal por outra "tela" (uma página local, um bot de chat): o grafo não muda, só quem chama `Command({ resume })`.
+
+## Etapa M8 — o curador em produção (Cloudflare Workers)
+
+**Objetivo:** o curador roda sozinho, toda segunda às 9h, num Cloudflare Worker. A revisão humana da M7 vira HTTP, cada chamada ao modelo entra num rastro (custo, tokens, latência por papel), o prompt ganha versões com portão de avaliação e rollback, e o CI testa tudo a cada push.
+
+```text
+Cron ─► scheduled() ─► grafo da M7 (checkpoint no KV) ─► pausa ─► GET /pendentes · POST /retomar ─► publica no KV
+                          │
+                          └─ rastro: { papel, item, tokens, latência } ─► GET /execucoes (custo, p50, p95)
+m08:avaliar (CI) ─► avaliação com hash ─► POST /prompts (portão contra a versão ativa) ─► POST /prompts/reverter
+```
+
+Implemente em `src/m08/`:
+
+1. **`rastreio.ts`:**
+   - `percentil` (posição mais próxima);
+   - `custoDaChamada` (tokens × preço por milhão);
+   - `resumirRastro` (total e por papel: chamadas, erros, tokens, custo, p50, p95);
+   - `rastrearPapeis` (cada papel roda dentro de `comAtributos({ papel, alvo })`).
+2. **`prompts.ts`:**
+   - `registrarVersao` (imutável, com hash);
+   - `versaoAtiva`;
+   - `promover` (portão: hash igual, nenhum caso especial, macro-F1 mínimo e não pior que a versão ativa com o mesmo modelo);
+   - `reverter` (rollback pelo histórico).
+
+Fornecidos:
+- `nuvem.ts`: o Worker (`scheduled` + rotas HTTP), com os papéis da versão agendada (o coletor vira código);
+- `checkpoint-kv.ts`: o checkpointer no KV;
+- `armazenamento.ts`, `tipos-rastreio.ts` e `tipos-prompts.ts`;
+- `worker/`: as entradas do Worker, com o seu código e com a solução;
+- `wrangler.jsonc`;
+- `scripts/m08-avaliar.ts`: a eval de uma versão da skill;
+- `scripts/m08-operar.ts`: o cliente do Worker;
+- `.github/workflows/`: o CI e a eval do prompt.
+
+O `@mentoria/llm` ganhou `observarChamadas` e `comAtributos`: cada chamada ao modelo emite um evento.
+
+**Feito =**
+1. `pnpm -F @mentoria/curador exec vitest run test/m08.test.ts` verde (offline);
+2. uma edição gerada pelo cron no Worker local, revisada por HTTP e publicada:
+
+   ```bash
+   cp projeto-final/.dev.vars.example projeto-final/.dev.vars    # o token do editor (local)
+   pnpm -F @mentoria/curador m08:dev                              # terminal 1: o Worker (porta 8787)
+   pnpm -F @mentoria/curador m08:operar rodar                     # terminal 2: dispara o cron (~4 min, 8 notícias)
+   pnpm -F @mentoria/curador m08:operar pendentes
+   pnpm -F @mentoria/curador m08:operar responder '{"<id>":{"acao":"aprovar"}}'
+   pnpm -F @mentoria/curador m08:operar execucoes                 # custo, tokens e latência por papel
+   ```
+
+3. uma versão do **seu** prompt avaliada e promovida, e um rollback:
+
+   ```bash
+   pnpm -F @mentoria/curador m08:avaliar                          # avalia skills/curar-noticia → saidas/m08-avaliacao.json
+   pnpm -F @mentoria/curador m08:operar promover v1
+   # copie a pasta da skill, mude o SKILL.md, avalie com -- --pasta <cópia>/curar-noticia e promova como v2
+   pnpm -F @mentoria/curador m08:operar reverter
+   ```
+
+O worker usa o **seu** código das etapas M2 a M7 (`classificarTipado`, `decidirPublicacao`, `montarPromptDaSkill`, `montarMarkdown`, `montarGrafoHitl`). Se travou numa delas, `m08:dev:solucao` usa as soluções.
+
+Responda (para a discussão final):
+
+- Qual papel custou mais tokens? E qual teve o pior p95? Você esperava?
+- A sua mudança de prompt passou no portão? Se passou no CI e foi barrada no Worker, por quê?
+- O que o rollback do prompt **não** desfaz?
+
+**Desafio extra:**
+
+- Publique de verdade (`wrangler kv namespace create CURADOR`, troque o `id`, `wrangler secret put EDITOR_TOKEN`, `wrangler deploy`). O Worker vai precisar de um endpoint de modelo acessível pela internet: qualquer um compatível com a API da OpenAI, configurado em `LLM_BASE_URL`, `LLM_MODEL` e `wrangler secret put LLM_API_KEY`. Meça o tempo de CPU no painel.
+- Troque o `CheckpointEmKV` por um checkpointer que grave a cada passo (D1 ou Durable Object com SQLite).
+- Exporte o rastro em OpenTelemetry (`@ai-sdk/otel`) para uma ferramenta de observabilidade.
 

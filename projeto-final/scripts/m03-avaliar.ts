@@ -3,11 +3,12 @@
 //   pnpm -F @mentoria/curador m03:avaliar --resumos     + evals de resumo (LLM-as-judge)
 //   pnpm -F @mentoria/curador m03:avaliar:solucao       o mesmo, com as soluções de referência
 // Grava saidas/m03-relatorio.md. Termina com código 1 se o portão de qualidade reprovar.
-import { spawnSync } from "node:child_process";
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { lerConfig } from "@mentoria/llm";
-import { CATEGORIAS, carregarNoticias } from "../src/noticia.js";
+import { metricas, rotuloDe, type Saida } from "../evals/metricas.js";
+import { rodarPromptfoo } from "../evals/rodar.js";
+import { carregarNoticias } from "../src/noticia.js";
 
 const PASTA = fileURLToPath(new URL("..", import.meta.url));
 const SAIDAS = `${PASTA}saidas/`;
@@ -16,52 +17,9 @@ mkdirSync(SAIDAS, { recursive: true });
 // Portão de qualidade (ajuste com a turma; os números vêm do baseline medido em aula).
 const PORTAO = { macroF1Minimo: 0.8, toleranciaContraV1: 0.0, fidelidadeMinima: 0.8 };
 
-function rodarPromptfoo(config: string, saida: string) {
-  console.log(`▸ promptfoo eval -c evals/${config}`);
-  const r = spawnSync(`${PASTA}node_modules/.bin/promptfoo`, ["eval", "-c", `evals/${config}`, "--no-cache", "--no-table", "--no-progress-bar", "-o", saida], {
-    cwd: PASTA,
-    stdio: ["ignore", "inherit", "inherit"],
-    env: { ...process.env, PROMPTFOO_DISABLE_TELEMETRY: "1", PROMPTFOO_DISABLE_UPDATE: "1" },
-  });
-  // O promptfoo sai com código != 0 quando alguma asserção falha; isso é esperado aqui.
-  if (r.error) throw r.error;
-  return JSON.parse(readFileSync(saida, "utf8")).results.results as ResultadoPromptfoo[];
-}
-
-interface ResultadoPromptfoo {
-  provider: { label: string };
-  vars: Record<string, string>;
-  namedScores: Record<string, number>;
-  response?: { output?: string };
-  error?: string;
-}
-
-type Saida = {
-  resultado: { ok: boolean; decisao?: { relevante: boolean; categoria: string | null; confianca: number } };
-  publicacao: { acao: string; motivos: string[] };
-};
-
-const rotuloDe = (relevante: boolean, categoria: string | null) => (relevante ? categoria ?? "?" : "irrelevante");
-const CLASSES = [...CATEGORIAS, "irrelevante"];
-
-function metricas(pares: { esperado: string; previsto: string }[]) {
-  const porClasse = CLASSES.map((c) => {
-    const tp = pares.filter((p) => p.previsto === c && p.esperado === c).length;
-    const fp = pares.filter((p) => p.previsto === c && p.esperado !== c).length;
-    const fn = pares.filter((p) => p.previsto !== c && p.esperado === c).length;
-    const precisao = tp + fp ? tp / (tp + fp) : 0;
-    const recall = tp + fn ? tp / (tp + fn) : 0;
-    const f1 = precisao + recall ? (2 * precisao * recall) / (precisao + recall) : 0;
-    return { classe: c, precisao, recall, f1, suporte: tp + fn };
-  });
-  const acuracia = pares.filter((p) => p.esperado === p.previsto).length / pares.length;
-  const macroF1 = porClasse.reduce((s, c) => s + c.f1, 0) / porClasse.length;
-  return { porClasse, acuracia, macroF1 };
-}
-
 const pct = (x: number) => `${(100 * x).toFixed(0)}%`;
 const noticias = new Map(carregarNoticias().map((n) => [n.id, n]));
-const brutos = rodarPromptfoo("classificacao.yaml", `${SAIDAS}m03-classificacao.json`);
+const brutos = rodarPromptfoo(PASTA, "classificacao.yaml", `${SAIDAS}m03-classificacao.json`);
 
 const versoes = ["v1", "v2"].map((versao) => {
   const linhas = brutos.filter((r) => r.provider.label === versao);
@@ -129,7 +87,7 @@ if (v2.macroF1 < v1.macroF1 - PORTAO.toleranciaContraV1) falhas.push(`v2 piorou 
 if (inseguros.length) falhas.push(`casos especiais publicados automaticamente: ${inseguros.join(", ")}`);
 
 if (process.argv.includes("--resumos")) {
-  const resumos = rodarPromptfoo("resumos.yaml", `${SAIDAS}m03-resumos.json`);
+  const resumos = rodarPromptfoo(PASTA, "resumos.yaml", `${SAIDAS}m03-resumos.json`);
   const media = (m: string) => resumos.reduce((s, r) => s + (r.namedScores[m] ?? 0), 0) / resumos.length;
   relatorio.push(
     ``,

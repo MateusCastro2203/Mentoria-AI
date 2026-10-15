@@ -33,7 +33,7 @@ Devs com ou sem experiência em IA. Todo exercício tem dois níveis:
 | 5 | [05 — Multiagente e MCP](modulos/05-multiagente-e-mcp/README.md) | coletor, classificador, redator e revisor com MCP local |
 | 6 | [06 — Orquestração com LangGraph.js](modulos/06-langgraph/README.md) | grafo com estado, checkpoint e arestas por confiança |
 | 7 | [07 — HITL e automação](modulos/07-hitl/README.md) | editor humano aprova, edita ou rejeita a edição |
-| 8 | 08 — Deploy e operação | execução agendada com tracing, custo, evals em CI e rollback |
+| 8 | [08 — Deploy e operação](modulos/08-deploy-e-operacao/README.md) | execução agendada com tracing, custo, evals em CI e rollback |
 
 A especificação completa está em [`ESPECIFICACAO.md`](ESPECIFICACAO.md).
 

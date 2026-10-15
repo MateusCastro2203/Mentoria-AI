@@ -9,7 +9,8 @@ import { classificarTipado, type ResultadoClassificacao } from "../m02/classific
 import { escaparXml } from "../m03/prompt-v2.js";
 import type { Noticia } from "../../src/noticia.js";
 
-export const PASTA_SKILL = fileURLToPath(new URL("../skills/curar-noticia/", import.meta.url));
+// Fora do Node (no Cloudflare Workers, M8) não há pasta: lá a skill chega como texto, e isto fica vazio.
+export const PASTA_SKILL = import.meta.url?.startsWith("file:") ? fileURLToPath(new URL("../skills/curar-noticia/", import.meta.url)) : "";
 
 export interface Skill {
   nome: string;

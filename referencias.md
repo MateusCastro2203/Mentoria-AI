@@ -93,4 +93,17 @@ Bibliografia consolidada da mentoria. Cada módulo lista as suas no próprio REA
 - LangGraph.js — interrupts: https://docs.langchain.com/oss/javascript/langgraph/interrupts
 - LangGraph.js — human-in-the-loop: https://docs.langchain.com/oss/javascript/langgraph/human-in-the-loop
 
-<!-- Módulos seguintes acrescentam suas referências aqui. -->
+## Deploy e operação (Módulo 08)
+
+- Cloudflare Workers — Cron Triggers: https://developers.cloudflare.com/workers/configuration/cron-triggers/ · limites: https://developers.cloudflare.com/workers/platform/limits/
+- Cloudflare Workers — compatibilidade com Node.js: https://developers.cloudflare.com/workers/runtime-apis/nodejs/
+- Workers KV — limites: https://developers.cloudflare.com/kv/platform/limits/ · consistência: https://developers.cloudflare.com/kv/concepts/how-kv-works/
+- Workers — rollbacks: https://developers.cloudflare.com/workers/configuration/versions-and-deployments/rollbacks/ · implantação gradual: https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/
+- Workers — logs: https://developers.cloudflare.com/workers/observability/logs/workers-logs/ · traces: https://developers.cloudflare.com/workers/observability/traces/
+- LangChain — deploy em Cloudflare Workers: https://docs.langchain.com/langsmith/deploy-cloudflare-workers
+- promptfoo — CI/CD: https://www.promptfoo.dev/docs/integrations/ci-cd/ · GitHub Action: https://www.promptfoo.dev/docs/integrations/github-action/
+- AI SDK — telemetria: https://ai-sdk.dev/docs/ai-sdk-core/telemetry
+- OpenTelemetry — convenções semânticas para GenAI: https://github.com/open-telemetry/semantic-conventions-genai
+- Ewaschuk, R. (2016). *Monitoring Distributed Systems*. Em: Beyer, B. et al. (orgs.), *Site Reliability Engineering*. O'Reilly. https://sre.google/sre-book/monitoring-distributed-systems/
+- Amazon Builders' Library. *Timeouts, retries, and backoff with jitter*. https://builder.aws.com/content/3EumjoZascWd1oZiEgL8ORlv3qE/timeouts-retries-and-backoff-with-jitter
+- Sculley, D. et al. (2015). *Hidden Technical Debt in Machine Learning Systems*. NeurIPS 28. https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems
