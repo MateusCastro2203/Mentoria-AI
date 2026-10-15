@@ -287,7 +287,7 @@ No prompt, o mesmo: **canário** (desafio do exercício)
 |---|---|---|
 | **Quando** | todo push e PR | prompt, eval ou dataset mudaram |
 | **Modelo** | simulado | o de verdade (Ollama no runner) |
-| **Tempo** | segundos | minutos |
+| **Tempo** | segundos (49 s o job todo) | **~6 min** (eval: 257 s) |
 | **Pega** | código quebrado, contrato | regressão de qualidade |
 
 `.github/workflows/ci.yml` · `.github/workflows/eval-prompt.yml`

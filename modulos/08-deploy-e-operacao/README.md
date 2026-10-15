@@ -63,6 +63,8 @@ Rodei tudo com `qwen3:4b-instruct` (Ollama), local, no `wrangler dev`. **Rode `m
 | `m08:avaliar` (skill da solução) | macro-F1 0,967 · acurácia 95% · 0 casos especiais publicados | 94 s |
 | skill "v2" piorada de propósito | macro-F1 0,852: **passa** no portão absoluto (≥ 0,8), **barrada** pelo Worker (pior que a ativa, 0,967) | 96 s |
 | promover v1.1 e reverter | v1 → v1.1 → v1, sem deploy | instantâneo |
+| `ci.yml` no GitHub Actions | typecheck + testes offline verdes | 49 s |
+| `eval-prompt.yml` no GitHub Actions (runner sem GPU) | mesmo macro-F1 do local (0,967); portão aprovado | ~6 min no total (Ollama 57 s, eval 257 s) |
 
 - **O rastro mostrou onde vai o custo.** Das 20 chamadas, as 6 do **revisor** geraram 3.747 dos 4.302 tokens de saída (87%) e tiveram p50 de 72 s. Investigando: com saída estruturada (JSON schema), o Ollama contou 758 tokens de saída para uma resposta de 326 caracteres; a mesma pergunta sem schema deu 152 tokens para 538 caracteres. Não investiguei a causa. A lição: **custo se mede, não se estima**. Sem o rastro, ninguém olharia para o revisor.
 - **Latência por chamada ≠ duração da execução.** As latências somaram 829 s numa execução de 245 s: as classificações rodam em paralelo e ficam na fila do Ollama local, o que infla o p95. Use isso para explicar por que o p95 importa e por que a soma engana.

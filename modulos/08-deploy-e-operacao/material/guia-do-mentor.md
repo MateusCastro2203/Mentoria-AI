@@ -189,7 +189,7 @@ O `m08:avaliar` guarda só a última avaliação: avalie a v2 logo antes de prom
 ## Slide 16 — Duas velocidades
 
 - **Testes offline:** rodam em todo envio, em segundos, com um modelo simulado. Pegam código quebrado.
-- **Eval com o modelo de verdade:** só quando o prompt, a eval ou os dados mudam. Leva minutos (o modelo roda no processador do servidor do GitHub). Pega quando o prompt piorou.
+- **Eval com o modelo de verdade:** só quando o prompt, a eval ou os dados mudam. Leva minutos (o modelo roda no processador do servidor do GitHub): medi ~6 min no total, dos quais 257 s de eval, com o mesmo resultado do local (macro-F1 0,967). Pega quando o prompt piorou.
 
 Se a eval reprova no portão, o PR (pedido de mudança) fica **vermelho** e não deveria entrar.
 
